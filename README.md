@@ -42,7 +42,7 @@ Then open **[http://localhost:8000](http://localhost:8000)** in your browser.
 
 ---
 
-## Talk Structure (49 Slides / 45 Minutes)
+## Talk Structure (51 Slides / 45 Minutes)
 
 - **Act 0: Cold Open — The 2003 Bedroom Experience (00:00 – 06:45)**
   - Title & eMule 99.9% status bar
@@ -52,7 +52,7 @@ Then open **[http://localhost:8000](http://localhost:8000)** in your browser.
   - Why P2P was the largest adversarial distributed systems lab in history
   - Talk roadmap
 - **Act I: Gen 1 — Napster & The Central Index Fallacy (06:45 – 12:45)**
-  - Before Napster: HTTP/FTP client-server bottlenecks
+  - Before Napster (1978–1998): **CBBS**, **Usenet (`alt.binaries`)**, **Fidonet (1984)**, **Hotline (1997)**, Ratio FTPs & HTTP/FTP client-server bottlenecks
   - Shawn Fanning & Dorm Room 300 (June 1999)
   - Napster Hybrid P2P Architecture (`O(1)` central index + direct TCP transfer)
   - The University Campus Bandwidth Crisis (75% of T3 pipes)
@@ -61,22 +61,24 @@ Then open **[http://localhost:8000](http://localhost:8000)** in your browser.
   - Justin Frankel's 24-hour renegade release of Gnutella (March 2000)
   - Unstructured Query Flooding & the $O(b^{\text{TTL}})$ meltdown
   - FastTrack & Kazaa's self-organizing Supernode hierarchy (and how it became **Skype**)
-  - **Direct Connect (`DC++`, 1999–2000s)**: Community hubs, minimum share quotas (`100 GB+`), and TTH Tiger Tree Hashes on university LANs
+  - **Direct Connect (`DC++`), `Soulseek` (2000 – still alive!), `Audiogalaxy`, `WinMX` & `Shareaza`**: Community hubs, minimum share quotas (`50 GB+`), TTH Tiger Tree Hashes, and browsable album trees
   - eDonkey2000 & "Merkur" creating open-source **eMule** (`ed2k://` + 9.28 MB chunk hashing)
   - The trauma of **High ID vs. Low ID** (NAT port forwarding `4662` TCP / `4672` UDP)
-  - The Dirty War: Overpeer/MediaDefender poisoning, RIAA lawsuits, Razorback 2.0 raid
+  - The Dirty War: Overpeer/MediaDefender poisoning, RIAA lawsuits, **U.S. Supreme Court *MGM v. Grokster* (2005)**, and the Razorback 2.0 raid
   - How eMule fought back: AICH SHA-1 Merkle trees & 384-bit RSA credit signatures
   - **The Kad Network (2004–2006)**: How eMule implemented the Kademlia DHT in production (`nodes.dat`, 128-bit XOR routing, UDP `4672` "Firewalled / Open") to survive server raids
-- **Act III: Gen 3 — BitTorrent, Kademlia, I2P & F2F Darknets (24:15 – 32:45)**
+- **Act III: Gen 3 — BitTorrent, Kademlia, `µTP`, I2P & F2F Darknets (24:15 – 33:15)**
   - Why eMule struggled with Flash Crowds vs. Bram Cohen's **BitTorrent** (2001)
   - Piece Selection: *Random First*, *Rarest First*, and *Endgame Mode*
   - Game Theory in Code: *Tit-for-Tat* choking & *Optimistic Unchoking*
   - The Culture of the Ratio: Private trackers, Seedboxes, *OiNK's Pink Palace* & *What.cd*
   - The Tracker Achilles' heel
   - **Kademlia DHT** (Maymounkov & Mazières, 2002) & the **XOR Metric** ($d(x,y) = x \oplus y$)
-  - $O(\log N)$ routing across 10M+ nodes & trackerless **Magnet Links**
+  - $O(\log N)$ routing across 10M+ nodes, trackerless **Magnet Links**, and **The Pirate Bay shutting down its tracker in Nov 2009** (90 MB text dump)
+  - **2008: ISP Throttling Wars, Bufferbloat & `µTP` / `LEDBAT` (BEP 29 / RFC 6817)**: How BitTorrent solved home ADSL ping spikes over UDP
   - **Anonymous P2P & I2P (Invisible Internet Project, 2003)**: Public swarm IP exposure (HADOPI), Unidirectional Tunnels, Garlic Routing, *I2PSnark* & *iMule*
   - **Friend-to-Friend (F2F) Darknets**: Justin Frankel's **WASTE** (pulled by AOL in 24h!) & **RetroShare / Turtle F2F** PGP social trust graph routing
+  - **2005–2014: The Megaupload Cyberlocker Detour (2012 Raid) & Popcorn Time (2014 Sequential Torrent Streaming)**
 - **Act IV: Plot Twist — P2P Under the Hood of Modern Infra (31:30 – 38:45)**
   - How µTorrent's creator (Ludvig Strigeus) built **Spotify's** desktop P2P streaming engine (88.4% bandwidth offloaded!)
   - Windows 10/11 Delivery Optimization, Blizzard's WoW Downloader & **Uber Kraken / CNCF Dragonfly**

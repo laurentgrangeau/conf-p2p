@@ -233,15 +233,15 @@ Let's rewind to 1999. Act I: Generation 1 P2P and the Napster revolution.
 
 ----
 
-## Before Napster (1998): The Agony of Client-Server MP3s
+## Before Napster (1978–1998): BBSes, Fidonet, FTP & The Client-Server Wall
 
 <div class="grid-2">
   <div class="card card-red">
-    <h3>How You Found an MP3 in 1998</h3>
+    <h3>The Pre-P2P Underground (1978–1998)</h3>
     <ul>
-      <li>Search AltaVista or Lycos for <code>"index of /mp3"</code>.</li>
-      <li>Click through 14 dead GeoCities / Tripod links (<code>HTTP 404</code> or <code>Bandwidth Limit Exceeded</code>).</li>
-      <li>Join shady <strong>Ratio FTPs</strong> ("Upload 1 MB to download 3 MB") or IRC <code>#mp3</code> XDCC bots.</li>
+      <li><strong>1978–1984 (Dial-Up Pioneers):</strong> Ward Christensen's <strong>CBBS</strong> &amp; <code>XMODEM</code>, <strong>Usenet</strong> (<code>alt.binaries</code>, 1979), and <strong>Fidonet (1984)</strong> — a nocturnal store-and-forward dial-up mesh linking independent BBSes!</li>
+      <li><strong>1990s Scene &amp; Communities:</strong> Shady <strong>Ratio FTPs</strong> (<em>"Upload 1 MB to download 3 MB"</em>), IRC <code>#mp3</code> <strong>XDCC / Fserve bots</strong>, and <strong>Hotline Communications (1997)</strong>.</li>
+      <li><strong>1998 Web Agony:</strong> Searching AltaVista for <code>"index of /mp3"</code> and clicking 14 dead GeoCities links (<code>HTTP 404</code> / <code>Bandwidth Limit Exceeded</code>).</li>
     </ul>
   </div>
   <div class="card card-cyan">
@@ -258,8 +258,10 @@ Let's rewind to 1999. Act I: Generation 1 P2P and the Napster revolution.
 
 Note:
 [07:15 - 08:30]
-In 1998, the Fraunhofer Institute's MP3 codec had compressed a 50 MB WAV song down to 4 MB. And Nullsoft's Winamp ("It really whips the llama's ass!") was on every PC.
-But finding MP3s was miserable! Why? Because the web is Client-Server. If a college student put a popular song on a GeoCities or university FTP server, 500 people would click it and immediately saturate the server's network card. Popularity killed availability.
+Digital file sharing didn't start in 1999—it goes back to **CBBS (1978)**, **Usenet's `alt.binaries` (1979)**, and **Fidonet (1984)**, where hobbyist Bulletin Board Systems automatically dialed each other late at night when phone rates were cheap to relay messages and files across the world!
+By the mid-1990s, you had **IRC XDCC bots**, **Ratio FTP servers**, and **Hotline (1997)**—a legendary Mac/PC community app where you logged into custom servers to chat and trade software and MP3s.
+In 1998, the Fraunhofer Institute's MP3 codec compressed a 50 MB WAV song down to 4 MB, and Nullsoft's Winamp ("It really whips the llama's ass!") was on every PC.
+But finding MP3s on the Web was miserable! Why? Because HTTP and FTP are **Client-Server**. If a college student put a hit song on a GeoCities or university FTP server, 500 people would click it and immediately saturate the server's network card. Popularity killed availability.
 
 ----
 
@@ -508,19 +510,19 @@ And here's one of the best plot twists in tech history: two years later, that ex
 
 ----
 
-## Direct Connect & DC++ (1999–2000s): The King of Campus LANs
+## Direct Connect (`DC++`), Soulseek & Multi-Network Legends
 
 <div class="grid-60-40">
   <div class="card card-purple">
-    <h3>Community Hubs &amp; Browsable Hard Drives</h3>
+    <h3><code>DC++</code> (1999) &amp; <code>Soulseek</code> (2000 — Still Alive Today!)</h3>
     <ul>
-      <li><strong>Nov 1999:</strong> Jonathan Hess creates <strong>NeoModus Direct Connect (<code>NMDC</code>)</strong>; immortalized in 2001 by Jacek Sieka's open-source <strong>DC++</strong> (and later the <code>ADC</code> protocol).</li>
-      <li>Instead of one giant global soup, users connected to specialized, community-run <strong>Hubs</strong> (<code>dchub://</code>) — university dorms, Scandinavian fiber co-ops, anime clubs, LAN parties.</li>
-      <li><strong>Unique UX:</strong> An IRC chatroom fused with a file manager — you could right-click any user in chat, select <em>"Get File List"</em>, and browse their entire shared folder tree!</li>
+      <li><strong>Direct Connect &amp; DC++ (1999/2001):</strong> Built around community <strong>Hubs</strong> (<code>dchub://</code>) on university dorm LANs &amp; Nordic fiber. Enforced strict <strong>"Minimum 50 GB Share"</strong> gates verified by <strong>TTH (192-bit Tiger Tree Hashes)</strong> so students couldn't fake quotas by sharing <code>C:\Windows</code>!</li>
+      <li><strong>Soulseek (Oct 2000, Nir Arbel — ex-Napster dev):</strong> Built for underground electronic &amp; indie crate-diggers. Lets you browse full album folder trees, set persistent <em>Wishlists</em>, and has zero adware — <strong>still thriving in 2026!</strong></li>
+      <li><strong>The Multi-Protocol Era:</strong> <strong>Audiogalaxy Satellite</strong> (1998–2002), <strong>WinMX</strong> (<code>OpenNap</code> + <code>WPNP</code>), and <strong>Shareaza</strong> (2001, connecting to <code>ed2k</code>, <code>Gnutella</code>, <code>G2</code> &amp; <code>BitTorrent</code> at once!).</li>
     </ul>
   </div>
   <div class="card card-amber">
-    <h3>"Minimum Share: 50 GB" &amp; Tiger Tree Hashes</h3>
+    <h3>"Minimum Share: 50 GB" &amp; Browsable Trees</h3>
     <div class="win-window" style="margin: 8px 0;">
       <div class="win-titlebar win-red">
         <span>DC++ Hub Gatekeeper Bot</span>
@@ -530,19 +532,17 @@ And here's one of the best plot twists in tech history: two years later, that ex
       </div>
     </div>
     <ul>
-      <li>Hubs enforced strict anti-leech entry quotas: <strong>Minimum GB Shared</strong> + <strong>Minimum Open Upload Slots</strong>.</li>
-      <li>When cheeky students shared <code>C:\Windows</code> or renamed dummy files to hit 50 GB, DC++ introduced <strong>TTH (Tiger Tree Hashes)</strong> — a 192-bit cryptographic Merkle tree that exposed fake files and enabled multi-source segmented downloading!</li>
+      <li><strong>Human Curation Over Chaos:</strong> Both <strong>DC++</strong> and <strong>Soulseek</strong> proved that letting users <em>browse a peer's organized directory tree</em> beat blind keyword searches for rare albums and LAN parties.</li>
     </ul>
   </div>
 </div>
 
 Note:
 [17:30 - 18:30]
-Before we talk about eMule, who here ever went to a LAN party or lived in a university dorm in the 2000s and used **DC++ (Direct Connect)**?
-Created in late 1999 and made famous by the open-source client **DC++**, Direct Connect took a totally different social approach. Instead of one global anonymous network, you connected to private or thematic **Hubs** (`dchub://`)—like your engineering school's dorm LAN or a Swedish fiber hub.
-DC++ had two iconic features:
-1. First, you could literally click on a user's nickname in chat and **browse their entire shared directory tree** like Windows Explorer!
-2. Second, to stop free-riders, Hub bots enforced strict entry gates: *"Minimum 50 GB shared and 3 open upload slots required!"* Desperate freshmen would share their `C:\Windows\System32` folder or generate 20 GB of uncompressed `.bmp` files just to get inside—until DC++ rolled out **TTH (Tiger Tree Hashes)**, a 192-bit Merkle hash tree that let hub scripts automatically ban anyone sharing duplicate or junk files!
+Before we talk about eMule, we have to salute the community legends that grew alongside Gnutella and Kazaa between 1999 and 2002:
+1. First, **Direct Connect (1999)** and its open-source king **DC++ (2001)**. If you lived in a university dorm or went to LAN parties, DC++ was religion. You connected to community **Hubs** (`dchub://`), browsed other students' entire shared directory trees, and faced ruthless Hub gatekeeper bots: *"Minimum 50 GB shared required!"* When freshmen tried sharing `C:\Windows` or 20 GB of zero-filled dummy files to get in, DC++ rolled out **TTH (Tiger Tree Hashes)**—a 192-bit Merkle tree hash that caught fake files instantly!
+2. Second, **Soulseek (October 2000)**, created by ex-Napster programmer Nir Arbel. While Kazaa was full of top-40 radio pop and malware, Soulseek became the sacred library for rare vinyl rips, underground electronic music, and full album folders—and remarkably, **Soulseek is still alive and thriving today in 2026**!
+3. And we also had **Audiogalaxy Satellite** (the beloved web-triggered background agent shut down in 2002), **WinMX**, and **Shareaza** (2001), which could connect to eDonkey, Gnutella, Gnutella2, and BitTorrent simultaneously!
 
 ----
 
@@ -639,20 +639,20 @@ eMule forced an entire generation of teenagers to log into `192.168.1.1`, unders
     </ul>
   </div>
   <div class="card card-green">
-    <h3>3. Server Raids (2006)</h3>
+    <h3>3. <em>MGM v. Grokster</em> &amp; Server Raids</h3>
     <ul>
-      <li><strong>Feb 2006:</strong> Belgian police raid <strong>Razorback 2.0</strong> (largest ed2k server indexing 1.3M concurrent users).</li>
-      <li><strong>May 2006:</strong> Fake <code>ed2k</code> spy servers (<em>Sonnenschein</em>) set up by anti-piracy firms to harvest downloader IPs.</li>
+      <li><strong>June 2005 (<em>MGM v. Grokster</em>):</strong> U.S. Supreme Court rules 9–0 that <strong>decentralized code is NOT a legal shield</strong> if a company <em>actively induces</em> infringement — killing commercial P2P startups (<em>Grokster, Morpheus, eDonkey's MetaMachine, LimeWire</em>).</li>
+      <li><strong>Feb 2006:</strong> Belgian police raid <strong>Razorback 2.0</strong> (largest <code>ed2k</code> server indexing 1.3M users), while fake spy servers (<em>Sonnenschein</em>) harvest IPs.</li>
     </ul>
   </div>
 </div>
 
 Note:
 [20:30 - 21:30]
-As P2P grew unstoppable in court, the entertainment industry switched to asymmetric warfare between 2003 and 2006.
+As P2P grew unstoppable technically, the entertainment industry escalated on three fronts between 2003 and 2006:
 1. First: **Technical sabotage**. Companies like Overpeer and MediaDefender ran massive server farms injecting millions of poisoned MP3s and fake AVI chunks into Kazaa and eDonkey.
 2. Second: **Suing end users**. The RIAA sued over 30,000 individuals, including a 12-year-old honors student in New York and a 66-year-old grandmother in Massachusetts accused of sharing Snoop Dogg songs on a Windows-only client when she only owned a Mac!
-3. Third: **Seizing index servers**. In February 2006, Belgian police seized Razorback 2.0, the largest eMule server.
+3. Third: **The Supreme Court & Server Raids**. After Napster, P2P startups assumed that as long as their network had no central server, they were protected by the 1984 *Sony Betamax* ruling. In **June 2005 (*MGM Studios, Inc. v. Grokster, Ltd.*)**, the U.S. Supreme Court shattered that illusion 9–0: if your business model *actively induces* copyright infringement, decentralization won't save you! That killed commercial P2P companies (Grokster, Morpheus, MetaMachine, LimeWire), leaving only non-commercial open-source software like **eMule** and **BitTorrent** standing—just as Belgian police seized **Razorback 2.0** in February 2006.
 
 ----
 
@@ -963,7 +963,7 @@ Look at the binary example on the right: if two 160-bit IDs share the first 4 le
     </ul>
   </div>
   <div class="card card-amber">
-    <h3>The Death of the <code>.torrent</code> File: Magnet Links</h3>
+    <h3>Nov 2009: The Death of the <code>.torrent</code> Tracker</h3>
     <div class="win-window">
       <div class="win-titlebar win-green">
         <span>Pure Content Addressing (BEP 9 + BEP 5)</span>
@@ -974,7 +974,8 @@ Look at the binary example on the right: if two 160-bit IDs share the first 4 le
     </div>
     <ul>
       <li><strong>Zero servers. Zero trackers. Zero <code>.torrent</code> files hosted on websites.</strong></li>
-      <li>With just <strong>40 hex characters</strong> scribbled on a napkin, your client queries the Kademlia DHT, finds peers matching that <code>InfoHash</code>, fetches the metadata dictionary from the peers themselves (BEP 9), and downloads the file!</li>
+      <li>With just <strong>40 hex characters</strong>, your client queries the Kademlia DHT, finds peers matching that <code>InfoHash</code>, and fetches the metadata dictionary from peers (BEP 9).</li>
+      <li><strong>Nov 2009 Milestone:</strong> After the 2006 police raid &amp; 2009 trial, <strong>The Pirate Bay permanently deletes its central tracker</strong> — switching 100% to Magnet links so its entire database fits inside a <strong>90 MB text file</strong>!</li>
     </ul>
   </div>
 </div>
@@ -984,7 +985,40 @@ Note:
 Because every hop in Kademlia matches at least one more leading bit of the target hash, each step cuts the remaining search space in half—just like binary search across a planet-scale network!
 Even if there are **10 million computers** in the BitTorrent Mainline DHT (and today there are regularly 15 to 25 million concurrent DHT nodes!), finding a file takes at most $\log_2(10,000,000) \approx 24$ hops.
 Combine Kademlia DHT (BEP 5) with Metadata Exchange (BEP 9) and Peer Exchange (PEX), and you get the **Magnet Link**:
-Just 40 hexadecimal characters representing the cryptographic hash of the content. No web server, no tracker, no single point of failure.
+Just 40 hexadecimal characters representing the cryptographic hash of the content.
+And the ultimate proof came in **November 2009**: after surviving a 2006 Swedish police server raid and the 2009 trial, **The Pirate Bay permanently unplugged its own BitTorrent tracker** and switched 100% to Magnet Links + DHT—shrinking the entire site's catalog into a 90 MB compressed text file that anyone could mirror on a USB stick!
+
+----
+
+## 2008: ISP Throttling Wars, Bufferbloat & `µTP` (`LEDBAT`)
+
+<div class="grid-60-40">
+  <div class="card card-red">
+    <h3>Why BitTorrent Broke Home Wi-Fi &amp; Angered ISPs</h3>
+    <ul>
+      <li><strong>2007 ISP Sabotage:</strong> Comcast &amp; global ISPs secretly throttled BitTorrent by injecting forged <strong><code>TCP RST</code> (reset) packets</strong> pretending to be the other peer — sparking the first landmark FCC <strong>Net Neutrality</strong> investigation!</li>
+      <li><strong>The Home "Bufferbloat" Problem:</strong> Standard TCP aggressively fills your ADSL modem's uplink queue until packets drop — causing <strong><code>800ms+</code> ping spikes</strong> that froze web browsing and online gaming for everyone in the house.</li>
+    </ul>
+  </div>
+  <div class="card card-cyan">
+    <h3>Aug 2008: <code>µTP</code> &amp; <code>LEDBAT</code> (BEP 29 / RFC 6817)</h3>
+    <pre><code class="language-plaintext">Modem Queue Delay &lt; 100ms ──► µTP seeds at 100% line speed
+Mom opens a web page!
+Modem Queue Delay &gt; 100ms ──► µTP throttles to 5% in milliseconds!</code></pre>
+    <ul>
+      <li><strong>Built Over UDP:</strong> Enables native NAT hole-punching and defeats naive TCP port throttling.</li>
+      <li><strong> Polite Background Transport (<code>LEDBAT</code>):</strong> Measures one-way queuing delay in microseconds and <strong>yields bandwidth before a single packet is dropped</strong>!</li>
+    </ul>
+  </div>
+</div>
+
+Note:
+[30:45 - 31:30]
+On Wikipedia's timeline, **August 2008** marks one of the cleverest networking breakthroughs in P2P history: **`µTP` (Micro Transport Protocol)**.
+Remember what happened in 2006 when someone in your house left BitTorrent or eMule running? Nobody else could load a web page or play Counter-Strike!
+Why? Because standard **TCP congestion control** keeps ramping up upload speed until your ADSL router's memory buffer is 100% full and starts dropping packets—a phenomenon called **Bufferbloat** that adds 1,000 milliseconds of latency to every click. Worse, in 2007, ISPs like Comcast started secretly injecting forged `TCP RST` packets to kill BitTorrent connections!
+So Stanislav Shalunov and Ludvig Strigeus at BitTorrent invented **`µTP` (BEP 29)** and the **LEDBAT** algorithm (standardized as IETF RFC 6817) over UDP:
+Every packet carries a microsecond timestamp. The moment `µTP` sees queuing delay on your home router rise above 100 milliseconds—because your roommate clicked a YouTube video—BitTorrent immediately yields the pipe in milliseconds, and resumes full speed the instant the web page finishes loading!
 
 ----
 
@@ -1048,13 +1082,47 @@ People often confuse Tor and I2P, but their architectures are completely differe
 </div>
 
 Note:
-[31:45 - 32:45]
+[31:45 - 32:30]
 And alongside anonymous mixnets like I2P, another fascinating architecture emerged: **Friend-to-Friend (F2F) Darknets**!
 First, an amazing anecdote: remember Justin Frankel, who released Gnutella in March 2000 and had it pulled by AOL in 24 hours?
 In **May 2003**, still working at Nullsoft, Frankel did it **again**! He released **WASTE**—an RSA-encrypted Friend-to-Friend mesh network for small trusted groups. And once again, AOL lawyers pulled it down within 24 hours!
 Later systems like **RetroShare**, **Turtle F2F**, and **OneSwarm** took Friend-to-Friend even further:
 Look at the diagram on the right: Alice is friends with Bob, and Bob is friends with Charlie, authenticated by PGP keys. Alice and Charlie don't know each other.
 In an F2F network, Alice **only ever connects to Bob's IP address**. Nobody on the internet can scan Alice's port or discover she's running P2P. Yet when Alice searches for a file, Bob forwards the query to Charlie, and the encrypted file chunks flow from Charlie through Bob to Alice—giving you a darknet built entirely on human trust!
+
+----
+
+## 2005–2014: The Megaupload Detour & Popcorn Time Streaming
+
+<div class="grid-2">
+  <div class="card card-amber">
+    <h3>2005–2012: Why Direct Download (<code>Megaupload</code>) Rose &amp; Fell</h3>
+    <ul>
+      <li><strong>The Cyberlocker Boom:</strong> Spooked by P2P swarm IP letters (HADOPI) and ratio rules, millions shifted to HTTP "one-click" hosts: <strong>RapidShare</strong>, <strong>Megaupload (2005)</strong> &amp; <strong>MediaFire</strong> (accounting for 4% of global internet traffic!).</li>
+      <li><strong>Jan 2012 (The Napster Lesson Repeats):</strong> U.S. DOJ seizes <strong>Megaupload</strong> domains &amp; raids Kim Dotcom's mansion; <em>FileSonic</em> &amp; <em>FileServe</em> self-destruct overnight.</li>
+      <li><strong>Architectural Moral:</strong> Any centralized HTTP vault still has <strong>"one throat to choke."</strong></li>
+    </ul>
+  </div>
+  <div class="card card-purple">
+    <h3>March 2014: <code>Popcorn Time</code> ("Netflix for Pirates")</h3>
+    <pre><code class="language-plaintext">Standard BitTorrent : [ #42 ] [ #7 ] [ #99 ] [ #3 ]  (Rarest-First)
+Popcorn Time Stream : [ #1 ][ #2 ][ #3 ] ──► Priority Sliding Window
+                                             + Rarest-First ahead!</code></pre>
+    <ul>
+      <li><strong>P2P Strikes Back with UX:</strong> Written in a weekend in Buenos Aires using Node-Webkit + <code>peerflix</code>.</li>
+      <li><strong>Sequential Sliding-Window Swarming:</strong> Prioritized the next ~5 MB of video pieces sequentially for instant 1080p playback while keeping <em>Rarest-First</em> for future pieces!</li>
+    </ul>
+  </div>
+</div>
+
+Note:
+[32:30 - 33:15]
+Before we move to Act IV, look at what happened between **2005 and 2014** in the file-sharing timeline:
+First, because of P2P swarm IP monitoring and ISP throttling, millions of casual users temporarily abandoned P2P for centralized HTTP "cyberlockers" like **RapidShare** and **Megaupload (launched in 2005)**. At its peak, Megaupload alone carried 4% of global internet traffic!
+But in **January 2012**, history repeated the Napster lesson: the FBI seized Megaupload's servers and domains in a single morning, and every competing cyberlocker (*FileServe*, *FileSonic*) panicked and wiped their servers within 48 hours. Centralization had failed again!
+And then in **March 2014**, a group of designers and developers in Buenos Aires built **Popcorn Time** in a few days.
+Earlier we saw that BitTorrent downloads pieces in *Rarest-First* order—which is great for swarm health, but terrible if you want to watch a movie *right now* because you don't have Piece #1!
+Popcorn Time used a hybrid **Sequential Sliding Window**: it forced high priority on the immediate next few megabytes of the MP4 stream so playback started in 5 seconds like Netflix, while still downloading later pieces in Rarest-First order to keep the swarm alive!
 
 ---
 
