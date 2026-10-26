@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 175" width="100%" height="100%">
+
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="cyanBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0c233a" />
+      <stop offset="100%" stop-color="#081626" />
+    </linearGradient>
+    <linearGradient id="greenBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#09281c" />
+      <stop offset="100%" stop-color="#061912" />
+    </linearGradient>
+    <linearGradient id="amberBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2c1f0b" />
+      <stop offset="100%" stop-color="#1a1206" />
+    </linearGradient>
+    <linearGradient id="redBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2f111d" />
+      <stop offset="100%" stop-color="#1c0911" />
+    </linearGradient>
+    <linearGradient id="purpleBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#241338" />
+      <stop offset="100%" stop-color="#140a21" />
+    </linearGradient>
+    <marker id="arrowCyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#22c55e" />
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#f59e0b" />
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#f43f5e" />
+    </marker>
+    <marker id="arrowPurple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#c084fc" />
+    </marker>
+    <style>
+      .title { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 700; fill: #f8fafc; }
+      .mono { font-family: 'JetBrains Mono', monospace; fill: #e2e8f0; }
+      .label { font-family: 'Inter', sans-serif; fill: #cbd5e1; }
+      .muted { font-family: 'Inter', sans-serif; fill: #94a3b8; }
+      .cyan { fill: #38bdf8; }
+      .green { fill: #22c55e; }
+      .amber { fill: #f59e0b; }
+      .red { fill: #f43f5e; }
+      .purple { fill: #c084fc; }
+    </style>
+  </defs>
+
+  <rect width="500" height="175" rx="10" fill="url(#bgGrad)" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- State 1: Idle LAN -->
+  <rect x="18" y="16" width="464" height="58" rx="7" fill="url(#greenBox)" stroke="#22c55e" stroke-width="1.8"/>
+  <text x="32" y="39" class="mono green" font-size="12" font-weight="bold">1. Router Queue Delay &lt; 100ms (Idle Pipe)</text>
+  <rect x="32" y="48" width="420" height="14" rx="4" fill="#22c55e"/>
+  <text x="242" y="59" text-anchor="middle" class="mono" font-size="10" fill="#052e16" font-weight="bold">µTP Seeding at 100% Line Speed</text>
+
+  <!-- Event -->
+  <text x="250" y="94" text-anchor="middle" class="mono amber" font-size="11.5" font-weight="bold">⚡ Roommate clicks a web page / plays CS:GO (Queue Delay &gt; 100ms)</text>
+
+  <!-- State 2: Yielding -->
+  <rect x="18" y="104" width="464" height="58" rx="7" fill="url(#cyanBox)" stroke="#38bdf8" stroke-width="1.8"/>
+  <text x="32" y="127" class="mono cyan" font-size="12" font-weight="bold">2. LEDBAT Yields Instantly (Zero Packet Loss!)</text>
+  <rect x="32" y="136" width="45" height="14" rx="4" fill="#f59e0b"/>
+  <rect x="82" y="136" width="370" height="14" rx="4" fill="#38bdf8"/>
+  <text x="267" y="147" text-anchor="middle" class="mono" font-size="10" fill="#082f49" font-weight="bold">Web / Gaming Priority (95%) — µTP Trickles (5%)</text>
+
+</svg>

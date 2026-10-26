@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 210" width="100%" height="100%">
+
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="cyanBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0c233a" />
+      <stop offset="100%" stop-color="#081626" />
+    </linearGradient>
+    <linearGradient id="greenBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#09281c" />
+      <stop offset="100%" stop-color="#061912" />
+    </linearGradient>
+    <linearGradient id="amberBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2c1f0b" />
+      <stop offset="100%" stop-color="#1a1206" />
+    </linearGradient>
+    <linearGradient id="redBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2f111d" />
+      <stop offset="100%" stop-color="#1c0911" />
+    </linearGradient>
+    <linearGradient id="purpleBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#241338" />
+      <stop offset="100%" stop-color="#140a21" />
+    </linearGradient>
+    <marker id="arrowCyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#22c55e" />
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#f59e0b" />
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#f43f5e" />
+    </marker>
+    <marker id="arrowPurple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#c084fc" />
+    </marker>
+    <style>
+      .title { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 700; fill: #f8fafc; }
+      .mono { font-family: 'JetBrains Mono', monospace; fill: #e2e8f0; }
+      .label { font-family: 'Inter', sans-serif; fill: #cbd5e1; }
+      .muted { font-family: 'Inter', sans-serif; fill: #94a3b8; }
+      .cyan { fill: #38bdf8; }
+      .green { fill: #22c55e; }
+      .amber { fill: #f59e0b; }
+      .red { fill: #f43f5e; }
+      .purple { fill: #c084fc; }
+    </style>
+  </defs>
+
+  <rect width="520" height="210" rx="10" fill="url(#bgGrad)" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Start Node -->
+  <rect x="16" y="16" width="145" height="44" rx="7" fill="url(#cyanBox)" stroke="#38bdf8" stroke-width="1.8"/>
+  <text x="88" y="36" text-anchor="middle" class="title cyan" font-size="13">You (0010...)</text>
+  <text x="88" y="51" text-anchor="middle" class="mono muted" font-size="10">Want Target: 1101</text>
+
+  <!-- Hop 1 -->
+  <rect x="195" y="16" width="145" height="44" rx="7" fill="url(#amberBox)" stroke="#f59e0b" stroke-width="1.6"/>
+  <text x="267" y="36" text-anchor="middle" class="mono amber" font-size="12.5" font-weight="bold">Hop 1: Peer 1xxx</text>
+  <text x="267" y="51" text-anchor="middle" class="mono muted" font-size="10">Matches 1st bit (1)</text>
+
+  <!-- Hop 2 -->
+  <rect x="195" y="82" width="145" height="44" rx="7" fill="url(#amberBox)" stroke="#f59e0b" stroke-width="1.6"/>
+  <text x="267" y="102" text-anchor="middle" class="mono amber" font-size="12.5" font-weight="bold">Hop 2: Peer 11xx</text>
+  <text x="267" y="117" text-anchor="middle" class="mono muted" font-size="10">Matches 2 bits (11)</text>
+
+  <!-- Hop 3 -->
+  <rect x="195" y="148" width="145" height="44" rx="7" fill="url(#amberBox)" stroke="#f59e0b" stroke-width="1.6"/>
+  <text x="267" y="168" text-anchor="middle" class="mono amber" font-size="12.5" font-weight="bold">Hop 3: Peer 110x</text>
+  <text x="267" y="183" text-anchor="middle" class="mono muted" font-size="10">Matches 3 bits (110)</text>
+
+  <!-- Target Found -->
+  <rect x="372" y="142" width="132" height="54" rx="7" fill="url(#greenBox)" stroke="#22c55e" stroke-width="2"/>
+  <text x="438" y="164" text-anchor="middle" class="title green" font-size="13">1101 FOUND!</text>
+  <text x="438" y="182" text-anchor="middle" class="mono" font-size="10">"Here are 50 IPs"</text>
+
+  <!-- Arrows -->
+  <line x1="161" y1="38" x2="190" y2="38" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowCyan)"/>
+  <line x1="267" y1="60" x2="267" y2="77" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrowAmber)"/>
+  <line x1="267" y1="126" x2="267" y2="143" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrowAmber)"/>
+  <line x1="340" y1="170" x2="367" y2="170" stroke="#22c55e" stroke-width="2.2" marker-end="url(#arrowGreen)"/>
+
+  <text x="88" y="115" text-anchor="middle" class="mono cyan" font-size="11">Search Space</text>
+  <text x="88" y="132" text-anchor="middle" class="mono green" font-size="12" font-weight="bold">Halved Each Hop!</text>
+
+</svg>

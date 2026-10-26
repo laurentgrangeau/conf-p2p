@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 255" width="100%" height="100%">
+
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="cyanBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0c233a" />
+      <stop offset="100%" stop-color="#081626" />
+    </linearGradient>
+    <linearGradient id="greenBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#09281c" />
+      <stop offset="100%" stop-color="#061912" />
+    </linearGradient>
+    <linearGradient id="amberBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2c1f0b" />
+      <stop offset="100%" stop-color="#1a1206" />
+    </linearGradient>
+    <linearGradient id="redBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2f111d" />
+      <stop offset="100%" stop-color="#1c0911" />
+    </linearGradient>
+    <linearGradient id="purpleBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#241338" />
+      <stop offset="100%" stop-color="#140a21" />
+    </linearGradient>
+    <marker id="arrowCyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#22c55e" />
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#f59e0b" />
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#f43f5e" />
+    </marker>
+    <marker id="arrowPurple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#c084fc" />
+    </marker>
+    <style>
+      .title { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 700; fill: #f8fafc; }
+      .mono { font-family: 'JetBrains Mono', monospace; fill: #e2e8f0; }
+      .label { font-family: 'Inter', sans-serif; fill: #cbd5e1; }
+      .muted { font-family: 'Inter', sans-serif; fill: #94a3b8; }
+      .cyan { fill: #38bdf8; }
+      .green { fill: #22c55e; }
+      .amber { fill: #f59e0b; }
+      .red { fill: #f43f5e; }
+      .purple { fill: #c084fc; }
+    </style>
+  </defs>
+
+  <rect width="860" height="255" rx="10" fill="url(#bgGrad)" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Central Index -->
+  <rect x="235" y="16" width="390" height="68" rx="9" fill="url(#amberBox)" stroke="#f59e0b" stroke-width="2"/>
+  <text x="430" y="42" text-anchor="middle" class="title amber" font-size="16">NAPSTER CENTRAL INDEX CLUSTER</text>
+  <text x="430" y="65" text-anchor="middle" class="mono" font-size="13">RAM Table: { "Linkin_Park_Numb.mp3" ──► [128.10.4.9:6699] }</text>
+
+  <!-- Peer A -->
+  <rect x="60" y="155" width="230" height="72" rx="8" fill="url(#cyanBox)" stroke="#38bdf8" stroke-width="2"/>
+  <text x="175" y="183" text-anchor="middle" class="title cyan" font-size="16">PEER A (Searcher)</text>
+  <text x="175" y="206" text-anchor="middle" class="mono muted" font-size="12">Dorm PC • Wants Numb.mp3</text>
+
+  <!-- Peer B -->
+  <rect x="570" y="155" width="230" height="72" rx="8" fill="url(#greenBox)" stroke="#22c55e" stroke-width="2"/>
+  <text x="685" y="183" text-anchor="middle" class="title green" font-size="16">PEER B (File Owner)</text>
+  <text x="685" y="206" text-anchor="middle" class="mono muted" font-size="12">128.10.4.9:6699 (Ping: 24ms)</text>
+
+  <!-- Step 1 Arrow -->
+  <path d="M 190 155 L 330 88" stroke="#38bdf8" stroke-width="2.2" fill="none" marker-end="url(#arrowCyan)"/>
+  <text x="130" y="114" class="mono cyan" font-size="12" font-weight="bold">1. SEARCH QUERY</text>
+  <text x="130" y="131" class="mono muted" font-size="11">"Who has Numb.mp3?"</text>
+
+  <!-- Step 2 Arrow -->
+  <path d="M 380 88 L 240 155" stroke="#f59e0b" stroke-width="2.2" stroke-dasharray="6,4" fill="none" marker-end="url(#arrowAmber)"/>
+  <text x="345" y="122" class="mono amber" font-size="12" font-weight="bold">2. HIT LIST: Peer B (128.10.4.9)</text>
+
+  <!-- Publish from Peer B -->
+  <path d="M 670 155 L 530 88" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="4,4" fill="none" marker-end="url(#arrowCyan)"/>
+  <text x="615" y="114" class="mono muted" font-size="11">0. Publish File List</text>
+
+  <!-- Step 3 Direct Transfer -->
+  <path d="M 565 192 L 298 192" stroke="#22c55e" stroke-width="3.2" fill="none" marker-end="url(#arrowGreen)"/>
+  <rect x="318" y="168" width="224" height="20" rx="4" fill="#090d16"/>
+  <text x="430" y="182" text-anchor="middle" class="mono green" font-size="12" font-weight="bold">3. DIRECT TCP (Port 6699)</text>
+  <text x="430" y="216" text-anchor="middle" class="mono muted" font-size="11">MP3 audio bytes NEVER touch Napster's servers!</text>
+
+</svg>

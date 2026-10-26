@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 185" width="100%" height="100%">
+
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="cyanBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0c233a" />
+      <stop offset="100%" stop-color="#081626" />
+    </linearGradient>
+    <linearGradient id="greenBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#09281c" />
+      <stop offset="100%" stop-color="#061912" />
+    </linearGradient>
+    <linearGradient id="amberBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2c1f0b" />
+      <stop offset="100%" stop-color="#1a1206" />
+    </linearGradient>
+    <linearGradient id="redBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2f111d" />
+      <stop offset="100%" stop-color="#1c0911" />
+    </linearGradient>
+    <linearGradient id="purpleBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#241338" />
+      <stop offset="100%" stop-color="#140a21" />
+    </linearGradient>
+    <marker id="arrowCyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#22c55e" />
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#f59e0b" />
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#f43f5e" />
+    </marker>
+    <marker id="arrowPurple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#c084fc" />
+    </marker>
+    <style>
+      .title { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 700; fill: #f8fafc; }
+      .mono { font-family: 'JetBrains Mono', monospace; fill: #e2e8f0; }
+      .label { font-family: 'Inter', sans-serif; fill: #cbd5e1; }
+      .muted { font-family: 'Inter', sans-serif; fill: #94a3b8; }
+      .cyan { fill: #38bdf8; }
+      .green { fill: #22c55e; }
+      .amber { fill: #f59e0b; }
+      .red { fill: #f43f5e; }
+      .purple { fill: #c084fc; }
+    </style>
+  </defs>
+
+  <rect width="520" height="185" rx="10" fill="url(#bgGrad)" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Alice -->
+  <rect x="16" y="22" width="118" height="62" rx="8" fill="url(#cyanBox)" stroke="#38bdf8" stroke-width="2"/>
+  <text x="75" y="48" text-anchor="middle" class="title cyan" font-size="14">Alice</text>
+  <text x="75" y="68" text-anchor="middle" class="mono muted" font-size="10">PGP Key Verified</text>
+
+  <!-- Bob -->
+  <rect x="201" y="22" width="118" height="62" rx="8" fill="url(#greenBox)" stroke="#22c55e" stroke-width="2"/>
+  <text x="260" y="48" text-anchor="middle" class="title green" font-size="14">Bob (Friend)</text>
+  <text x="260" y="68" text-anchor="middle" class="mono muted" font-size="10">Encrypted Relay</text>
+
+  <!-- Charlie -->
+  <rect x="386" y="22" width="118" height="62" rx="8" fill="url(#purpleBox)" stroke="#c084fc" stroke-width="2"/>
+  <text x="445" y="48" text-anchor="middle" class="title purple" font-size="14">Charlie</text>
+  <text x="445" y="68" text-anchor="middle" class="mono muted" font-size="10">Friend-of-Friend</text>
+
+  <!-- PGP links -->
+  <line x1="138" y1="53" x2="196" y2="53" stroke="#22c55e" stroke-width="2.5" marker-start="url(#arrowGreen)" marker-end="url(#arrowGreen)"/>
+  <text x="167" y="43" text-anchor="middle" class="mono green" font-size="9.5">PGP TLS</text>
+
+  <line x1="323" y1="53" x2="381" y2="53" stroke="#22c55e" stroke-width="2.5" marker-start="url(#arrowGreen)" marker-end="url(#arrowGreen)"/>
+  <text x="352" y="43" text-anchor="middle" class="mono green" font-size="9.5">PGP TLS</text>
+
+  <!-- Anonymous Multi-hop tunnel -->
+  <path d="M 75 86 L 75 136 L 445 136 L 445 88" stroke="#f59e0b" stroke-width="2.2" stroke-dasharray="6,4" fill="none" marker-end="url(#arrowAmber)"/>
+  <rect x="95" y="118" width="330" height="38" rx="6" fill="#090d16" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="260" y="135" text-anchor="middle" class="mono amber" font-size="11" font-weight="bold">Multi-Hop File Transfer Routed via Bob</text>
+  <text x="260" y="150" text-anchor="middle" class="mono muted" font-size="10">Alice &amp; Charlie NEVER see each other's IP address!</text>
+
+</svg>

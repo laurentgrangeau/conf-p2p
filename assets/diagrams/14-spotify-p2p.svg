@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 195" width="100%" height="100%">
+
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="cyanBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0c233a" />
+      <stop offset="100%" stop-color="#081626" />
+    </linearGradient>
+    <linearGradient id="greenBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#09281c" />
+      <stop offset="100%" stop-color="#061912" />
+    </linearGradient>
+    <linearGradient id="amberBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2c1f0b" />
+      <stop offset="100%" stop-color="#1a1206" />
+    </linearGradient>
+    <linearGradient id="redBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2f111d" />
+      <stop offset="100%" stop-color="#1c0911" />
+    </linearGradient>
+    <linearGradient id="purpleBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#241338" />
+      <stop offset="100%" stop-color="#140a21" />
+    </linearGradient>
+    <marker id="arrowCyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#22c55e" />
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#f59e0b" />
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#f43f5e" />
+    </marker>
+    <marker id="arrowPurple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#c084fc" />
+    </marker>
+    <style>
+      .title { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 700; fill: #f8fafc; }
+      .mono { font-family: 'JetBrains Mono', monospace; fill: #e2e8f0; }
+      .label { font-family: 'Inter', sans-serif; fill: #cbd5e1; }
+      .muted { font-family: 'Inter', sans-serif; fill: #94a3b8; }
+      .cyan { fill: #38bdf8; }
+      .green { fill: #22c55e; }
+      .amber { fill: #f59e0b; }
+      .red { fill: #f43f5e; }
+      .purple { fill: #c084fc; }
+    </style>
+  </defs>
+
+  <rect width="500" height="195" rx="10" fill="url(#bgGrad)" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Click Play -->
+  <rect x="18" y="68" width="132" height="58" rx="8" fill="url(#greenBox)" stroke="#22c55e" stroke-width="2"/>
+  <text x="84" y="94" text-anchor="middle" class="title green" font-size="14">▶ Click Play</text>
+  <text x="84" y="112" text-anchor="middle" class="mono muted" font-size="10.5">"In The End"</text>
+
+  <!-- Branch 1: CDN -->
+  <path d="M 150 84 L 210 46" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrowAmber)"/>
+  <rect x="216" y="16" width="266" height="62" rx="7" fill="url(#amberBox)" stroke="#f59e0b" stroke-width="1.8"/>
+  <text x="349" y="39" text-anchor="middle" class="title amber" font-size="13">First 15s: Spotify Server (11.6%)</text>
+  <text x="349" y="59" text-anchor="middle" class="mono muted" font-size="11">Guarantees instant &lt;200ms audio start!</text>
+
+  <!-- Branch 2: P2P Overlay -->
+  <path d="M 150 110 L 210 144" stroke="#22c55e" stroke-width="2.5" marker-end="url(#arrowGreen)"/>
+  <rect x="216" y="102" width="266" height="76" rx="7" fill="url(#cyanBox)" stroke="#38bdf8" stroke-width="2"/>
+  <text x="349" y="126" text-anchor="middle" class="title cyan" font-size="13">Rest of Track: P2P Mesh (88.4%)</text>
+  <text x="349" y="146" text-anchor="middle" class="mono" font-size="11">Pulled from peers' encrypted cache</text>
+  <text x="349" y="164" text-anchor="middle" class="mono green" font-size="10.5">Kademlia DHT + Peer Neighborhoods</text>
+
+</svg>

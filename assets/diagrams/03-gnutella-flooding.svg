@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 290" width="100%" height="100%">
+
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="cyanBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0c233a" />
+      <stop offset="100%" stop-color="#081626" />
+    </linearGradient>
+    <linearGradient id="greenBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#09281c" />
+      <stop offset="100%" stop-color="#061912" />
+    </linearGradient>
+    <linearGradient id="amberBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2c1f0b" />
+      <stop offset="100%" stop-color="#1a1206" />
+    </linearGradient>
+    <linearGradient id="redBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2f111d" />
+      <stop offset="100%" stop-color="#1c0911" />
+    </linearGradient>
+    <linearGradient id="purpleBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#241338" />
+      <stop offset="100%" stop-color="#140a21" />
+    </linearGradient>
+    <marker id="arrowCyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#22c55e" />
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#f59e0b" />
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#f43f5e" />
+    </marker>
+    <marker id="arrowPurple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#c084fc" />
+    </marker>
+    <style>
+      .title { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 700; fill: #f8fafc; }
+      .mono { font-family: 'JetBrains Mono', monospace; fill: #e2e8f0; }
+      .label { font-family: 'Inter', sans-serif; fill: #cbd5e1; }
+      .muted { font-family: 'Inter', sans-serif; fill: #94a3b8; }
+      .cyan { fill: #38bdf8; }
+      .green { fill: #22c55e; }
+      .amber { fill: #f59e0b; }
+      .red { fill: #f43f5e; }
+      .purple { fill: #c084fc; }
+    </style>
+  </defs>
+
+  <rect width="560" height="290" rx="10" fill="url(#bgGrad)" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Peer A -->
+  <rect x="18" y="96" width="112" height="54" rx="8" fill="url(#cyanBox)" stroke="#38bdf8" stroke-width="2"/>
+  <text x="74" y="120" text-anchor="middle" class="title cyan" font-size="14">Peer A</text>
+  <text x="74" y="138" text-anchor="middle" class="mono" font-size="11">TTL = 7</text>
+
+  <!-- Hop 1 Peers -->
+  <rect x="195" y="34" width="112" height="50" rx="8" fill="url(#amberBox)" stroke="#f59e0b" stroke-width="1.8"/>
+  <text x="251" y="57" text-anchor="middle" class="title amber" font-size="14">Peer C</text>
+  <text x="251" y="74" text-anchor="middle" class="mono" font-size="11">TTL = 6</text>
+
+  <rect x="195" y="156" width="112" height="50" rx="8" fill="url(#amberBox)" stroke="#f59e0b" stroke-width="1.8"/>
+  <text x="251" y="179" text-anchor="middle" class="title amber" font-size="14">Peer D</text>
+  <text x="251" y="196" text-anchor="middle" class="mono" font-size="11">TTL = 6</text>
+
+  <!-- Hop 2 Peers -->
+  <rect x="395" y="14" width="142" height="44" rx="7" fill="url(#redBox)" stroke="#f43f5e" stroke-width="1.8"/>
+  <text x="466" y="35" text-anchor="middle" class="title red" font-size="13">Peer F (TTL=5)</text>
+  <text x="466" y="50" text-anchor="middle" class="mono muted" font-size="10">──► 6 more peers...</text>
+
+  <rect x="395" y="96" width="142" height="44" rx="7" fill="url(#redBox)" stroke="#f43f5e" stroke-width="1.8"/>
+  <text x="466" y="117" text-anchor="middle" class="title red" font-size="13">Peer G (TTL=5)</text>
+  <text x="466" y="132" text-anchor="middle" class="mono muted" font-size="10">Duplicate QUERY!</text>
+
+  <rect x="395" y="178" width="142" height="44" rx="7" fill="url(#redBox)" stroke="#f43f5e" stroke-width="1.8"/>
+  <text x="466" y="199" text-anchor="middle" class="title red" font-size="13">Peer H (TTL=5)</text>
+  <text x="466" y="214" text-anchor="middle" class="mono muted" font-size="10">──► 6 more peers...</text>
+
+  <!-- Arrows -->
+  <line x1="130" y1="112" x2="190" y2="65" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowCyan)"/>
+  <line x1="130" y1="134" x2="190" y2="176" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowCyan)"/>
+
+  <line x1="307" y1="52" x2="390" y2="36" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrowAmber)"/>
+  <line x1="307" y1="68" x2="390" y2="110" stroke="#f43f5e" stroke-width="2" marker-end="url(#arrowRed)"/>
+  <line x1="307" y1="170" x2="390" y2="126" stroke="#f43f5e" stroke-width="2" marker-end="url(#arrowRed)"/>
+  <line x1="307" y1="186" x2="390" y2="200" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrowAmber)"/>
+
+  <!-- Protocol summary bar -->
+  <rect x="18" y="236" width="524" height="40" rx="6" fill="#090d16" stroke="#334155" stroke-width="1"/>
+  <text x="280" y="254" text-anchor="middle" class="mono cyan" font-size="11.5">Messages: PING • PONG • QUERY • QUERYHIT • PUSH</text>
+  <text x="280" y="270" text-anchor="middle" class="mono muted" font-size="11">d = 4..8 TCP neighbors  |  TTL = 7 hops  |  Zero central servers</text>
+
+</svg>

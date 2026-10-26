@@ -246,12 +246,7 @@ Let's rewind to 1999. Act I: Generation 1 P2P and the Napster revolution.
   </div>
   <div class="card card-cyan">
     <h3>The Client-Server Paradox</h3>
-    <pre><code class="language-plaintext">         [ Central HTTP/FTP Server ]
-            (10 Mbps uplink Pipe)
-             /     |     |     \
-            v      v     v      v
-          Peer1  Peer2  Peer3 ... Peer10,000
-          (Bandwidth per user -> 0 kbps!)</code></pre>
+    <img class="diagram-svg" src="assets/diagrams/01-client-server.svg" alt="Client-Server Bottleneck Diagram" />
     <p class="text-amber"><strong>In HTTP/FTP:</strong> Popularity is a curse. The more people want a file, the slower the server gets.</p>
   </div>
 </div>
@@ -295,23 +290,7 @@ Fanning teamed up with Sean Parker—whom he met on an IRC hacking channel—and
 
 ## Napster Architecture: Hybrid P2P (Central Index)
 
-```plaintext
-                    ┌─────────────────────────────────────────┐
-                    │       NAPSTER CENTRAL INDEX CLUSTER     │
-                    │   RAM Table: { "Numb.mp3" -> [IP_B] }   │
-                    └───────────▲─────────────────┬───────────┘
-                                │                 │
-        1. PUBLISH & SEARCH     │                 │ 2. SEARCH HIT RESPONSE
-        "I have X.mp3"          │                 │ "Peer B (128.10.4.9:6699)
-        "Who has Numb.mp3?"     │                 │  has Numb.mp3 (Ping: 24ms)"
-                                │                 ▼
-                    ┌───────────┴─────┐     ┌─────────────────┐
-                    │     PEER A      │     │     PEER B      │
-                    │  (Searcher)     │◄────┤  (File Owner)   │
-                    └─────────────────┘     └─────────────────┘
-                             3. DIRECT TCP TRANSFER (Port 6699)
-                               (Audio bytes NEVER touch Napster!)
-```
+<img class="diagram-svg" src="assets/diagrams/02-napster-hybrid.svg" alt="Napster Hybrid P2P Architecture Diagram" />
 
 <div class="grid-3">
   <div class="card card-cyan">
@@ -445,15 +424,7 @@ But 24 hours on the internet is eternity. Hackers reverse-engineered the wire pr
 
 <div class="grid-2">
   <div>
-    <pre><code class="language-plaintext">                  [Peer C] ──QUERY──► [Peer F]
-                 ↗        ↘
- [Peer A] ──QUERY          QUERY──► [Peer G]
- (Search)        ↘        ↗
-                  [Peer D] ──QUERY──► [Peer H]
-
- • Messages: PING, PONG, QUERY, QUERYHIT, PUSH
- • Each peer maintains d = 4..8 TCP neighbors
- • Every QUERY has TTL = 7 (decremented each hop)</code></pre>
+    <img class="diagram-svg" src="assets/diagrams/03-gnutella-flooding.svg" alt="Gnutella Query Flooding Diagram" />
   </div>
   <div class="card card-red">
     <h3>The August 2000 Flooding Meltdown</h3>
@@ -480,12 +451,8 @@ And worse: Gnutella treated all peers equally. A college student on a 100 Mbps f
 <div class="grid-60-40">
   <div class="card card-cyan">
     <h3>Not All Peers Are Created Equal</h3>
-    <p>Created by <strong>Jaan Tallinn, Ahti Heinla & Priit Kasesalu</strong> (Estonia) with founders <strong>Niklas Zennström & Janus Friis</strong> (Sweden/Denmark).</p>
-    <pre><code class="language-plaintext">    [Supernode 1] ◄═══════ Mesh ═══════► [Supernode 2]
-     (Broadband)          Overlay         (Univ Fiber)
-      /   |   \                            /   |   \
-     p1  p2   p3                          p4  p5   p6
-    (56k / NAT)                          (ADSL / NAT)</code></pre>
+    <p>Created by <strong>Jaan Tallinn, Ahti Heinla &amp; Priit Kasesalu</strong> (Estonia) with founders <strong>Niklas Zennström &amp; Janus Friis</strong> (Sweden/Denmark).</p>
+    <img class="diagram-svg" src="assets/diagrams/04-kazaa-supernodes.svg" alt="FastTrack Supernode Two-Tier Hierarchy Diagram" />
     <ul>
       <li><strong>Self-Organizing Two-Tier Hierarchy:</strong> High-CPU, high-bandwidth, non-firewalled nodes automatically promote themselves to <strong>Supernodes</strong> (Gnutella later adopted this as <em>Ultrapeers</em>).</li>
       <li>Leaf nodes only index their files with their local Supernode. Queries only travel between Supernodes!</li>
@@ -698,10 +665,7 @@ eMule engineers responded with **AICH (Advanced Intelligent Corruption Handler)*
   </div>
   <div class="card card-cyan">
     <h3>How Kad Solved Serverless Keyword Search</h3>
-    <pre><code class="language-plaintext">File: "Linkin_Park_Numb.mp3" (FileHash: 0x8E5F...)
-  │
-  ├─► MD4("linkin") = 0x3A91.. ──► Publish to Peer 0x3A90..
-  └─► MD4("numb")   = 0x7F04.. ──► Publish to Peer 0x7F02..</code></pre>
+    <img class="diagram-svg" src="assets/diagrams/05-kad-keyword.svg" alt="eMule Kad Serverless Keyword Search Diagram" />
     <ul>
       <li><strong>Inverted DHT Index:</strong> Kad splits filenames into words, hashes each word with 128-bit MD4, and publishes the file pointer to nodes whose Kad ID is closest to that word's hash!</li>
       <li><strong>Kad "Buddy" Relays:</strong> Even firewalled <strong>Low ID</strong> users could receive incoming connections via a High ID <em>Kad Buddy</em> hole-punch coordinator!</li>
@@ -762,10 +726,7 @@ Cohen stripped away the search bar, the chat rooms, and the multi-file waiting q
 
 ## BitTorrent Under the Hood: Piece Selection Algorithms
 
-```plaintext
-File: Ubuntu.iso (1 GB) ──► Split into 4,096 Pieces (256 KB each, SHA-1 verified)
-                            └──► Each Piece split into 16 KB Blocks (pipelined over TCP)
-```
+<img class="diagram-svg" src="assets/diagrams/06-bittorrent-pieces.svg" alt="BitTorrent File to Pieces to Sub-Blocks Diagram" />
 
 <div class="grid-3">
   <div class="card card-cyan">
@@ -871,11 +832,7 @@ And on legendary music trackers like **OiNK's Pink Palace** and **What.cd**, you
 <div class="grid-2">
   <div class="card card-red">
     <h3>2001–2005: The Tracker Bottleneck</h3>
-    <pre><code class="language-plaintext">  .torrent file contains:
-  ┌──────────────────────────────────────────┐
-  │ announce: http://tracker.prq.to/announce │
-  │ info_hash: 9f86d081884c7d659a2feaa0...   │
-  └──────────────────────────────────────────┘</code></pre>
+    <img class="diagram-svg" src="assets/diagrams/07-tracker-bottleneck.svg" alt="BitTorrent Central Tracker Bottleneck Diagram" />
     <ul>
       <li>To join a swarm, your client had to make an HTTP GET request to a central <strong>Tracker</strong> server to get a list of 50 peer IPs.</li>
       <li><strong>2004–2006:</strong> Suprnova.org, LokiTorrent, EliteTorrents, and Razorback are shut down or raided.</li>
@@ -921,10 +878,7 @@ Enter **Kademlia**.
   </div>
   <div class="card card-cyan">
     <h3>Why XOR ($\oplus$) Is Magical</h3>
-    <pre><code class="language-plaintext">Node X : 0101 1100 (92)
-Hash Y : 0101 0011 (83)
-─────────────────────────
-X ⊕ Y  : 0000 1111 (Distance = 15)</code></pre>
+    <img class="diagram-svg" src="assets/diagrams/08-kademlia-xor.svg" alt="Kademlia XOR Distance Metric Diagram" />
     <ul>
       <li>$d(x,x) = 0$ (Identity)</li>
       <li>$d(x,y) = d(y,x)$ (Symmetry: Node A and Node B agree on their distance)</li>
@@ -950,12 +904,7 @@ Look at the binary example on the right: if two 160-bit IDs share the first 4 le
 <div class="grid-2">
   <div class="card card-cyan">
     <h3>Halving the Distance Every Hop</h3>
-    <pre><code class="language-plaintext">You (0010...) searching for Target Hash (1101...)
-  │
-  ├── Hop 1: Ask peer in 1xxx bucket ──► returns 11xx peer
-  ├── Hop 2: Ask peer 11xx           ──► returns 110x peer
-  └── Hop 3: Ask peer 110x           ──► returns 1101 (FOUND!)
-                                         "Here are 50 IPs seeding it"</code></pre>
+    <img class="diagram-svg" src="assets/diagrams/09-kademlia-hops.svg" alt="Kademlia O(log N) Routing Hops Diagram" />
     <ul>
       <li>Each node keeps a small routing table ($k$-buckets) with lots of contacts close to itself and a few contacts far away.</li>
       <li>Each RPC (<code>FIND_NODE</code> / <code>GET_PEERS</code>) resolves at least <strong>1 bit of prefix</strong>.</li>
@@ -1002,9 +951,7 @@ And the ultimate proof came in **November 2009**: after surviving a 2006 Swedish
   </div>
   <div class="card card-cyan">
     <h3>Aug 2008: <code>µTP</code> &amp; <code>LEDBAT</code> (BEP 29 / RFC 6817)</h3>
-    <pre><code class="language-plaintext">Modem Queue Delay &lt; 100ms ──► µTP seeds at 100% line speed
-Mom opens a web page!
-Modem Queue Delay &gt; 100ms ──► µTP throttles to 5% in milliseconds!</code></pre>
+    <img class="diagram-svg" src="assets/diagrams/10-utp-ledbat.svg" alt="uTP and LEDBAT Congestion Control Diagram" />
     <ul>
       <li><strong>Built Over UDP:</strong> Enables native NAT hole-punching and defeats naive TCP port throttling.</li>
       <li><strong> Polite Background Transport (<code>LEDBAT</code>):</strong> Measures one-way queuing delay in microseconds and <strong>yields bandwidth before a single packet is dropped</strong>!</li>
@@ -1035,9 +982,7 @@ Every packet carries a microsecond timestamp. The moment `µTP` sees queuing del
   </div>
   <div class="card card-purple">
     <h3>Inside I2P: Garlic Routing &amp; Unidirectional Tunnels</h3>
-    <pre><code class="language-plaintext"> [Peer A] ──Outbound Tunnel──► [Relay] ──Inbound Tunnel──► [Peer B]
-          ◄──Inbound Tunnel─── [Relay] ◄──Outbound Tunnel──
-           (Multiple messages bundled into a "Garlic Bulb"!)</code></pre>
+    <img class="diagram-svg" src="assets/diagrams/11-i2p-garlic.svg" alt="I2P Unidirectional Tunnels and Garlic Routing Diagram" />
     <ul>
       <li><strong>Why I2P ≠ Tor:</strong> Tor is built to exit to the clearnet web (and hates BitTorrent traffic). <strong>I2P</strong> was engineered <em>specifically</em> for internal P2P overlays!</li>
       <li><strong>Garlic Routing:</strong> Encrypts and bundles multiple independent messages ("cloves") + delivery instructions into a single "garlic bulb" across <strong>unidirectional tunnels</strong>.</li>
@@ -1070,10 +1015,7 @@ People often confuse Tor and I2P, but their architectures are completely differe
   </div>
   <div class="card card-cyan">
     <h3>Social Trust Graph Routing (<code>RetroShare</code> / <code>Turtle F2F</code>)</h3>
-    <pre><code class="language-plaintext">  [Alice] ◄══ PGP Mutual Auth ══► [Bob] ◄══ PGP Mutual Auth ══► [Charlie]
-     │                              │                               │
-     └──── Searches &amp; Downloads File From Charlie THROUGH Bob! ─────┘
-           (Alice &amp; Charlie NEVER see each other's IP address!)</code></pre>
+    <img class="diagram-svg" src="assets/diagrams/12-f2f-retroshare.svg" alt="Friend-to-Friend Social Trust Graph Routing Diagram" />
     <ul>
       <li><strong>Zero Sybil or Poisoning Attacks:</strong> Anti-piracy bots cannot join your network unless one of your real-life friends physically exchanges PGP keys with them!</li>
       <li><strong>Plausible Deniability &amp; Multi-Hop Privacy:</strong> You only ever open TCP/UDP sockets to your direct friends' IPs, while searches and file chunks hop anonymously across friends-of-friends (<code>RetroShare</code>, <code>OneSwarm</code>, <code>GNUnet F2F</code>).</li>
@@ -1105,9 +1047,7 @@ In an F2F network, Alice **only ever connects to Bob's IP address**. Nobody on t
   </div>
   <div class="card card-purple">
     <h3>March 2014: <code>Popcorn Time</code> ("Netflix for Pirates")</h3>
-    <pre><code class="language-plaintext">Standard BitTorrent : [ #42 ] [ #7 ] [ #99 ] [ #3 ]  (Rarest-First)
-Popcorn Time Stream : [ #1 ][ #2 ][ #3 ] ──► Priority Sliding Window
-                                             + Rarest-First ahead!</code></pre>
+    <img class="diagram-svg" src="assets/diagrams/13-popcorn-time.svg" alt="Popcorn Time Sequential Sliding Window vs Rarest-First Diagram" />
     <ul>
       <li><strong>P2P Strikes Back with UX:</strong> Written in a weekend in Buenos Aires using Node-Webkit + <code>peerflix</code>.</li>
       <li><strong>Sequential Sliding-Window Swarming:</strong> Prioritized the next ~5 MB of video pieces sequentially for instant 1080p playback while keeping <em>Rarest-First</em> for future pieces!</li>
@@ -1152,14 +1092,7 @@ Quite the opposite. The rebels moved inside the castle and used P2P to build mod
   </div>
   <div class="card card-cyan">
     <h3>Spotify's Secret Desktop P2P Mesh (2008–2014)</h3>
-    <pre><code class="language-plaintext">Click Play ("In The End")
-  │
-  ├─► First 15 sec: Streamed from Spotify Server
-  │                 (Instant 200ms playback!)
-  │
-  └─► Rest of Track: Pulled via P2P Overlay
-                     from other Spotify users'
-                     encrypted local disk cache!</code></pre>
+    <img class="diagram-svg" src="assets/diagrams/14-spotify-p2p.svg" alt="Spotify Hybrid P2P Desktop Streaming Architecture Diagram" />
     <p class="text-green"><strong>Result (EuroSys 2010 Paper):</strong> <strong>88.4% of Spotify's music bytes</strong> came from peer-to-peer transfers + local cache, and only <strong>11.6%</strong> from Spotify's servers!</p>
   </div>
 </div>
@@ -1221,10 +1154,7 @@ Look around the rest of modern software:
   </div>
   <div class="card card-amber">
     <h3>The Irony of GitHub</h3>
-    <pre><code class="language-plaintext">Commit e83c5163 (Root Hash)
-  └──► Tree 5b24a910
-        ├──► Blob 9f86d0 (README.md)
-        └──► Blob 4a1c02 (main.c)</code></pre>
+    <img class="diagram-svg" src="assets/diagrams/15-git-merkle-dag.svg" alt="Git Content-Addressed Merkle DAG Diagram" />
     <p>Git was architected as a <strong>100% serverless P2P system</strong>.</p>
     <p class="text-amber">Then we all put <strong>GitHub</strong> in the middle as a central coordination server — accidentally recreating the <strong>Napster Hybrid P2P</strong> topology for source code!</p>
   </div>
@@ -1253,14 +1183,7 @@ And the funniest irony? We took a completely decentralized peer-to-peer protocol
   </div>
   <div class="card card-purple">
     <h3>P2P Gossip Protocols in Production</h3>
-    <pre><code class="language-plaintext">      [Node A: Token 0x00..]
-        /                \
-   Gossip (1s)        Gossip (1s)
-      /                    \
- [Node D: 0xC0..] ◄═══► [Node B: 0x40..]
-      \                    /
-        \                /
-      [Node C: Token 0x80..]</code></pre>
+    <img class="diagram-svg" src="assets/diagrams/16-cassandra-ring.svg" alt="Cassandra Consistent Hashing Ring and Gossip Protocol Diagram" />
     <ul>
       <li>How do 500 Cassandra nodes know which servers are alive or dead without a central ZooKeeper master?</li>
       <li>Every <strong>1 second</strong>, each node runs an epidemic <strong>P2P Gossip round</strong> (<code>Scuttlebutt</code>) with 1–3 random peers — the direct descendant of Gnutella's overlay!</li>
@@ -1296,11 +1219,7 @@ In Apache Cassandra and ScyllaDB:
   </div>
   <div class="card card-green">
     <h3>NAT Traversal Black Magic (UDP Hole Punching)</h3>
-    <pre><code class="language-plaintext">[Laptop Behind Hotel NAT]          [Home NAS Behind ISP Box]
-       │                                      │
-       └─── Simultaneous Outbound UDP ────────┘
-            Packets Punch State Table
-            Holes in BOTH Firewalls!</code></pre>
+    <img class="diagram-svg" src="assets/diagrams/17-tailscale-holepunch.svg" alt="Tailscale and WireGuard UDP Hole Punching Diagram" />
     <ul>
       <li>Uses <strong>STUN, ICE, UPnP/NAT-PMP</strong>, and even <strong>Birthday-Paradox port scanning</strong> to punch through strict carrier-grade NATs without touching <code>192.168.1.1</code>.</li>
       <li>If all else fails, falls back to <code>DERP</code> relay servers — just like 2003 <strong>Skype Supernodes</strong>!</li>
@@ -1360,12 +1279,8 @@ And even consumer hardware runs on P2P today:
     </ul>
   </div>
   <div class="card card-cyan">
-    <h3>PeerTube & Enterprise Live CDN Offloading</h3>
-    <pre><code class="language-plaintext">         [ Origin / HLS Video CDN ]
-               /              \
-              v                v
-      [Browser Peer 1] ◄══WebRTC══► [Browser Peer 2]
-            (Shares .ts / .m4s video segments!)</code></pre>
+    <h3>PeerTube &amp; Enterprise Live CDN Offloading</h3>
+    <img class="diagram-svg" src="assets/diagrams/18-peertube-webrtc.svg" alt="PeerTube WebRTC Browser-to-Browser Video Swarming Diagram" />
     <ul>
       <li><strong>PeerTube</strong> (Framasoft): Federated + WebTorrent/WebRTC video platform where viewers watching a viral video automatically seed chunks to other viewers in their browser tab!</li>
     </ul>
@@ -1503,21 +1418,7 @@ And think back to our 2003 trauma: on IPFS, a fake Linkin Park virus is mathemat
 
 ## Inside IPFS: Merkle DAGs & Deduplication
 
-```plaintext
-                        ┌───────────────────────────────────┐
-                        │  Root CID: bafybeigdyrzt5sfp...   │
-                        │  (Directory: /my-conference-talk) │
-                        └─────────┬───────────────┬─────────┘
-                                  │               │
-                    ┌─────────────▼─────┐   ┌─────▼─────────────┐
-                    │ CID: bafk...91a   │   │ CID: bafk...42f   │
-                    │ (slides.md)       │   │ (video_demo.mp4)  │
-                    └───────────────────┘   └───────┬───────────┘
-                                            ┌───────┴───────┐
-                                            ▼               ▼
-                                     [Chunk 1: 256KB] [Chunk 2: 256KB]
-                                      (CID: bafk..01)  (CID: bafk..02)
-```
+<img class="diagram-svg" src="assets/diagrams/19-ipfs-merkle-dag.svg" alt="IPFS Content-Addressed Merkle DAG and Deduplication Diagram" />
 
 <div class="grid-3">
   <div class="card card-green">

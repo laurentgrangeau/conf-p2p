@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 175" width="100%" height="100%">
+
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="cyanBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0c233a" />
+      <stop offset="100%" stop-color="#081626" />
+    </linearGradient>
+    <linearGradient id="greenBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#09281c" />
+      <stop offset="100%" stop-color="#061912" />
+    </linearGradient>
+    <linearGradient id="amberBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2c1f0b" />
+      <stop offset="100%" stop-color="#1a1206" />
+    </linearGradient>
+    <linearGradient id="redBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2f111d" />
+      <stop offset="100%" stop-color="#1c0911" />
+    </linearGradient>
+    <linearGradient id="purpleBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#241338" />
+      <stop offset="100%" stop-color="#140a21" />
+    </linearGradient>
+    <marker id="arrowCyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#22c55e" />
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#f59e0b" />
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#f43f5e" />
+    </marker>
+    <marker id="arrowPurple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#c084fc" />
+    </marker>
+    <style>
+      .title { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 700; fill: #f8fafc; }
+      .mono { font-family: 'JetBrains Mono', monospace; fill: #e2e8f0; }
+      .label { font-family: 'Inter', sans-serif; fill: #cbd5e1; }
+      .muted { font-family: 'Inter', sans-serif; fill: #94a3b8; }
+      .cyan { fill: #38bdf8; }
+      .green { fill: #22c55e; }
+      .amber { fill: #f59e0b; }
+      .red { fill: #f43f5e; }
+      .purple { fill: #c084fc; }
+    </style>
+  </defs>
+
+  <rect width="500" height="175" rx="10" fill="url(#bgGrad)" stroke="#1e293b" stroke-width="1.5"/>
+
+  <rect x="18" y="14" width="250" height="72" rx="7" fill="url(#amberBox)" stroke="#f59e0b" stroke-width="1.8"/>
+  <text x="143" y="36" text-anchor="middle" class="title amber" font-size="13">.torrent Metadata File</text>
+  <text x="143" y="56" text-anchor="middle" class="mono" font-size="10.5">announce: tracker.prq.to</text>
+  <text x="143" y="73" text-anchor="middle" class="mono muted" font-size="10.5">info_hash: 9f86d081884c...</text>
+
+  <line x1="268" y1="50" x2="318" y2="50" stroke="#f43f5e" stroke-width="2.2" stroke-dasharray="5,3" marker-end="url(#arrowRed)"/>
+
+  <rect x="324" y="14" width="158" height="72" rx="7" fill="url(#redBox)" stroke="#f43f5e" stroke-width="2"/>
+  <text x="403" y="38" text-anchor="middle" class="title red" font-size="13">HTTP Tracker</text>
+  <text x="403" y="58" text-anchor="middle" class="mono red" font-size="12" font-weight="bold">502 BAD GATEWAY</text>
+  <text x="403" y="75" text-anchor="middle" class="mono muted" font-size="10">(Seized / Offline)</text>
+
+  <rect x="18" y="104" width="464" height="54" rx="7" fill="#090d16" stroke="#f43f5e" stroke-width="1.2"/>
+  <text x="250" y="127" text-anchor="middle" class="mono red" font-size="12" font-weight="bold">SINGLE POINT OF FAILURE (2001–2005)</text>
+  <text x="250" y="146" text-anchor="middle" class="mono muted" font-size="11">Swarm peers exist, but new downloaders cannot discover their IPs!</text>
+
+</svg>

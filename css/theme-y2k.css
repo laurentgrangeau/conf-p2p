@@ -550,6 +550,20 @@ body.crt-enabled .crt-overlay {
   margin: 0 auto 0.6em auto;
 }
 
+/* Custom Vector SVG Diagrams */
+.reveal img.diagram-svg {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  max-height: none;
+  height: auto;
+  margin: 8px auto;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
+  background: transparent;
+}
+
 /* Reveal UI Controls Positioning */
 .reveal .controls {
   bottom: 38px;
