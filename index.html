@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>From eMule MP3s to the Decentralized Web: The Crazy History of Peer-to-Peer</title>
+
+  <!-- Reveal.js Core CSS & Dark Base Theme -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" />
+
+  <!-- Code syntax highlighting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css" />
+
+  <!-- Google Fonts: Retro Terminal + Clean Tech Sans + Monospace -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&family=Share+Tech+Mono&family=Space+Grotesk:wght@400;500;700&family=VT323&display=swap" rel="stylesheet" />
+
+  <!-- Custom Y2K / P2P Cyber Theme -->
+  <link rel="stylesheet" href="css/theme-y2k.css?v=2" />
+</head>
+<body class="crt-enabled">
+  <!-- Subtle CRT Scanline Overlay (Toggle with 'C' key) -->
+  <div class="crt-overlay" id="crt-overlay"></div>
+
+  <!-- Top Retro Window Bar -->
+  <header class="p2p-topbar">
+    <div class="topbar-left">
+      <span class="led led-green"></span>
+      <span class="topbar-app">eMule v0.50a // BitTorrent DHT // IPFS Node</span>
+    </div>
+    <div class="topbar-center" id="topbar-chapter">
+      [00] BOOTSTRAPING P2P OVERLAY NETWORK...
+    </div>
+    <div class="topbar-right">
+      <span class="topbar-pill" id="crt-toggle" title="Press 'C' to toggle CRT scanlines">CRT: ON</span>
+      <span class="topbar-pill">PORT: 4662 TCP</span>
+    </div>
+  </header>
+
+  <!-- Reveal.js Presentation Container -->
+  <div class="reveal">
+    <div class="slides">
+      <section
+        data-markdown="slides.md"
+        data-separator="^\r?\n---\r?\n$"
+        data-separator-vertical="^\r?\n----\r?\n$"
+        data-separator-notes="^Note:"
+        data-charset="utf-8"
+      ></section>
+    </div>
+  </div>
+
+  <!-- Bottom eMule / Winamp Style Telemetry Bar -->
+  <footer class="p2p-statusbar">
+    <div class="status-cell">
+      <span class="status-label">KAD:</span>
+      <span class="status-val text-green">CONNECTED (High ID)</span>
+    </div>
+    <div class="status-cell">
+      <span class="status-label">SWARM:</span>
+      <span class="status-val text-cyan" id="swarm-peers">1,337 Seeds / 420 Peers</span>
+    </div>
+    <div class="status-cell status-dl-bar">
+      <span class="status-label">PROGRESS:</span>
+      <div class="mini-progress">
+        <div class="mini-progress-fill" id="deck-progress-fill"></div>
+      </div>
+      <span class="status-val" id="deck-progress-pct">0.0%</span>
+    </div>
+    <div class="status-cell">
+      <span class="status-label">RATIO:</span>
+      <span class="status-val text-amber" id="swarm-ratio">3.14 ↑</span>
+    </div>
+    <div class="status-cell status-hint">
+      <span>[S] Speaker Notes &nbsp;|&nbsp; [O] Overview &nbsp;|&nbsp; [C] CRT Mode</span>
+    </div>
+  </footer>
+
+  <!-- Reveal.js Scripts & Plugins -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/markdown/markdown.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/math/math.js"></script>
+
+  <script>
+    const chapterTitles = [
+      "[ACT 0] 2003: THE LIVING ROOM ADSL EXPERIENCE",
+      "[ACT I] GEN 1: NAPSTER & THE CENTRAL SERVER FALLACY (1999–2001)",
+      "[ACT II] GEN 2: GNUTELLA, KAZAA, eMULE & THE POISONING WARS (2000–2005)",
+      "[ACT III] GEN 3: BITTORRENT, KADEMLIA DHT & GAME THEORY (2001–2010)",
+      "[ACT IV] P2P IN DISGUISE: HOW REBELS BUILT MODERN INFRASTRUCTURE",
+      "[ACT V] THE WEB OF TOMORROW: IPFS, LIBP2P & CONTENT ADDRESSING",
+      "[FINALE] SEEDING KNOWLEDGE // 100% COMPLETE"
+    ];
+
+    Reveal.initialize({
+      width: 1280,
+      height: 720,
+      margin: 0.06,
+      minScale: 0.2,
+      maxScale: 2.0,
+      hash: true,
+      center: true,
+      controls: true,
+      progress: false, // Using our custom eMule bottom progress bar
+      slideNumber: 'c/t',
+      transition: 'fade',
+      backgroundTransition: 'fade',
+      plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
+    }).then(() => {
+      updateStatusBar();
+    });
+
+    function updateStatusBar() {
+      const indices = Reveal.getIndices();
+      const totalSlides = Reveal.getTotalSlides();
+      const slidePast = Reveal.getSlidePastCount() + 1;
+      const pct = Math.min(100, ((slidePast / Math.max(1, totalSlides)) * 100)).toFixed(1);
+
+      const fillEl = document.getElementById('deck-progress-fill');
+      const pctEl = document.getElementById('deck-progress-pct');
+      const chapterEl = document.getElementById('topbar-chapter');
+      const peersEl = document.getElementById('swarm-peers');
+
+      if (fillEl) fillEl.style.width = pct + '%';
+      if (pctEl) {
+        // Classic 99.9% eMule Easter egg right before the last slide
+        if (slidePast === totalSlides - 1) {
+          pctEl.textContent = '99.9% (Stuck)';
+          pctEl.classList.add('text-amber');
+        } else {
+          pctEl.textContent = pct + '%';
+          pctEl.classList.remove('text-amber');
+        }
+      }
+
+      if (chapterEl) {
+        const hIndex = Math.min(indices.h, chapterTitles.length - 1);
+        chapterEl.textContent = chapterTitles[hIndex] || chapterTitles[0];
+      }
+
+      if (peersEl) {
+        const seeds = 1024 + (indices.h * 512) + (indices.v * 64);
+        const leechers = Math.max(12, 650 - (indices.h * 95));
+        peersEl.textContent = `${seeds.toLocaleString()} Seeds / ${leechers} Leechers`;
+      }
+    }
+
+    Reveal.on('slidechanged', updateStatusBar);
+
+    // Toggle CRT Scanlines with 'C' key or clicking the badge
+    function toggleCRT() {
+      document.body.classList.toggle('crt-enabled');
+      const badge = document.getElementById('crt-toggle');
+      const isOn = document.body.classList.contains('crt-enabled');
+      if (badge) badge.textContent = isOn ? 'CRT: ON' : 'CRT: OFF';
+    }
+
+    document.getElementById('crt-toggle')?.addEventListener('click', toggleCRT);
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'c' || e.key === 'C') {
+        if (document.activeElement?.tagName !== 'INPUT' && document.activeElement?.tagName !== 'TEXTAREA') {
+          toggleCRT();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
