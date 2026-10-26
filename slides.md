@@ -499,12 +499,50 @@ And worse: Gnutella treated all peers equally. A college student on a 100 Mbps f
 </div>
 
 Note:
-[16:15 - 17:45]
+[16:15 - 17:30]
 How do you fix Gnutella's flooding meltdown without bringing back Napster's single server?
 In March 2001, three brilliant Estonian programmers—Jaan Tallinn, Ahti Heinla, and Priit Kasesalu—working with Niklas Zennström and Janus Friis, released the **FastTrack** protocol and **Kazaa**.
 Their insight: **Not all peers are equal.** Instead of a flat network, FastTrack automatically detects which users have fast CPUs, broadband connections, and public IP addresses, and dynamically promotes them to **Supernodes**.
 Slow dial-up users become "leaf nodes" connected to a Supernode. Queries only bounce between Supernodes, cutting network overhead by 99%!
 And here's one of the best plot twists in tech history: two years later, that exact same team took the Kazaa Supernode engine, replaced file transfers with voice codecs, and created **Skype**! If you ever wondered why Skype in 2005 ate your bandwidth even when you weren't on a call—congratulations, if you had a public IP, Skype turned your PC into a relay Supernode for other people's phone calls!
+
+----
+
+## Direct Connect & DC++ (1999–2000s): The King of Campus LANs
+
+<div class="grid-60-40">
+  <div class="card card-purple">
+    <h3>Community Hubs &amp; Browsable Hard Drives</h3>
+    <ul>
+      <li><strong>Nov 1999:</strong> Jonathan Hess creates <strong>NeoModus Direct Connect (<code>NMDC</code>)</strong>; immortalized in 2001 by Jacek Sieka's open-source <strong>DC++</strong> (and later the <code>ADC</code> protocol).</li>
+      <li>Instead of one giant global soup, users connected to specialized, community-run <strong>Hubs</strong> (<code>dchub://</code>) — university dorms, Scandinavian fiber co-ops, anime clubs, LAN parties.</li>
+      <li><strong>Unique UX:</strong> An IRC chatroom fused with a file manager — you could right-click any user in chat, select <em>"Get File List"</em>, and browse their entire shared folder tree!</li>
+    </ul>
+  </div>
+  <div class="card card-amber">
+    <h3>"Minimum Share: 50 GB" &amp; Tiger Tree Hashes</h3>
+    <div class="win-window" style="margin: 8px 0;">
+      <div class="win-titlebar win-red">
+        <span>DC++ Hub Gatekeeper Bot</span>
+      </div>
+      <div class="win-body" style="font-size: 0.76em;">
+        <code>*** Disconnected: Minimum share is 50 GB and 3 open Upload Slots! (You share: 12.4 GB)</code>
+      </div>
+    </div>
+    <ul>
+      <li>Hubs enforced strict anti-leech entry quotas: <strong>Minimum GB Shared</strong> + <strong>Minimum Open Upload Slots</strong>.</li>
+      <li>When cheeky students shared <code>C:\Windows</code> or renamed dummy files to hit 50 GB, DC++ introduced <strong>TTH (Tiger Tree Hashes)</strong> — a 192-bit cryptographic Merkle tree that exposed fake files and enabled multi-source segmented downloading!</li>
+    </ul>
+  </div>
+</div>
+
+Note:
+[17:30 - 18:30]
+Before we talk about eMule, who here ever went to a LAN party or lived in a university dorm in the 2000s and used **DC++ (Direct Connect)**?
+Created in late 1999 and made famous by the open-source client **DC++**, Direct Connect took a totally different social approach. Instead of one global anonymous network, you connected to private or thematic **Hubs** (`dchub://`)—like your engineering school's dorm LAN or a Swedish fiber hub.
+DC++ had two iconic features:
+1. First, you could literally click on a user's nickname in chat and **browse their entire shared directory tree** like Windows Explorer!
+2. Second, to stop free-riders, Hub bots enforced strict entry gates: *"Minimum 50 GB shared and 3 open upload slots required!"* Desperate freshmen would share their `C:\Windows\System32` folder or generate 20 GB of uncompressed `.bmp` files just to get inside—until DC++ rolled out **TTH (Tiger Tree Hashes)**, a 192-bit Merkle hash tree that let hub scripts automatically ban anyone sharing duplicate or junk files!
 
 ----
 
@@ -639,11 +677,45 @@ As P2P grew unstoppable in court, the entertainment industry switched to asymmet
 </div>
 
 Note:
-[21:30 - 22:30]
+[21:30 - 22:15]
 Look at the cryptographic arms race that happened inside eMule to survive this war:
 1. Poisoning bots realized eMule verified 9.28 MB chunks with MD4. So a bot would wait until you downloaded 9.27 MB from real users, then send you 10 KB of garbage at the end—forcing your client to throw away the whole 9.28 MB!
 eMule engineers responded with **AICH (Advanced Intelligent Corruption Handler)**: a full SHA-1 Merkle tree over 180 KB blocks, allowing eMule to pinpoint the exact corrupted 180 KB slice, salvage 98% of the chunk, and ban the poisoner's IP!
-2. And when "Leecher Mods" tried to cheat the queue system, eMule introduced RSA public-key cryptography (`cryptkey.dat`) and stored credits exclusively on the recipient's machine. Welcome to Act III!
+2. And when "Leecher Mods" tried to cheat the queue system, eMule introduced RSA public-key cryptography (`cryptkey.dat`) and stored credits exclusively on the recipient's machine.
+
+----
+
+## 2004–2006: How the `Kad` Network Saved eMule From Extinction
+
+<div class="grid-60-40">
+  <div class="card card-green">
+    <h3>Surviving the Razorback 2.0 Raid</h3>
+    <ul>
+      <li>When Belgian police seized <strong>Razorback 2.0</strong> in Feb 2006 and anti-piracy firms spun up fake <code>ed2k</code> spy servers, why didn't eMule die like Napster?</li>
+      <li>Because in 2004, eMule v0.40+ had quietly rolled out the <strong>Kad Network</strong> — the first planet-scale, serverless UDP <strong>Kademlia DHT</strong> (bootstrapped from a simple <code>nodes.dat</code> file!).</li>
+      <li>Even if every <code>ed2k</code> server on Earth was unplugged, eMule clients could find peers and search files purely peer-to-peer via <strong>Kad</strong>.</li>
+    </ul>
+  </div>
+  <div class="card card-cyan">
+    <h3>How Kad Solved Serverless Keyword Search</h3>
+    <pre><code class="language-plaintext">File: "Linkin_Park_Numb.mp3" (FileHash: 0x8E5F...)
+  │
+  ├─► MD4("linkin") = 0x3A91.. ──► Publish to Peer 0x3A90..
+  └─► MD4("numb")   = 0x7F04.. ──► Publish to Peer 0x7F02..</code></pre>
+    <ul>
+      <li><strong>Inverted DHT Index:</strong> Kad splits filenames into words, hashes each word with 128-bit MD4, and publishes the file pointer to nodes whose Kad ID is closest to that word's hash!</li>
+      <li><strong>Kad "Buddy" Relays:</strong> Even firewalled <strong>Low ID</strong> users could receive incoming connections via a High ID <em>Kad Buddy</em> hole-punch coordinator!</li>
+    </ul>
+  </div>
+</div>
+
+Note:
+[22:15 - 23:00]
+And how did eMule survive when Belgian police raided Razorback 2.0 in February 2006?
+Because two years earlier, eMule developers had implemented the **Kad Network** (alongside the *Overnet* network)!
+All you needed was a tiny file called `nodes.dat` containing a handful of peer IPs, and your eMule client joined a completely serverless UDP Kademlia network.
+And look at the clever engineering on the right: standard DHTs only let you look up an exact file hash. How did eMule Kad let you type `"Linkin Park"` into a search box with no central server?
+When you shared a file, eMule split the filename into individual keywords (`"linkin"`, `"park"`, `"numb"`), hashed each word with MD4 into a 128-bit target ID, and sent a publish packet to the eMule peers whose Node ID was closest to the hash of `"linkin"`! It built a **distributed, serverless full-text inverted search index** across millions of home PCs! Welcome to Act III!
 
 ---
 
@@ -908,11 +980,81 @@ Look at the binary example on the right: if two 160-bit IDs share the first 4 le
 </div>
 
 Note:
-[29:45 - 31:30]
+[29:45 - 30:45]
 Because every hop in Kademlia matches at least one more leading bit of the target hash, each step cuts the remaining search space in half—just like binary search across a planet-scale network!
 Even if there are **10 million computers** in the BitTorrent Mainline DHT (and today there are regularly 15 to 25 million concurrent DHT nodes!), finding a file takes at most $\log_2(10,000,000) \approx 24$ hops.
 Combine Kademlia DHT (BEP 5) with Metadata Exchange (BEP 9) and Peer Exchange (PEX), and you get the **Magnet Link**:
-Just 40 hexadecimal characters representing the cryptographic hash of the content. No web server, no tracker, no single point of failure. The cat-and-mouse architectural war was won by mathematics.
+Just 40 hexadecimal characters representing the cryptographic hash of the content. No web server, no tracker, no single point of failure.
+
+----
+
+## The Last Vulnerability: Public Swarm IPs, Anonymous P2P & I2P
+
+<div class="grid-60-40">
+  <div class="card card-red">
+    <h3>Why BitTorrent &amp; eMule Aren't Private</h3>
+    <ul>
+      <li>Kademlia &amp; Magnet links made swarms impossible to shut down — <strong>but every peer in a swarm still sees your home IPv4 address!</strong></li>
+      <li>Monitoring bots (RIAA, copyright trolls, <strong>HADOPI</strong> in France) simply joined the DHT/swarm, logged peer IPs, and mailed warning letters.</li>
+      <li>This sparked <strong>Anonymous P2P</strong>: <strong>Freenet</strong> (Ian Clarke, 2000), <strong>GNUnet</strong>, <strong>Tribler</strong>, and the darknet masterpiece: <strong>I2P (Invisible Internet Project, 2003)</strong>.</li>
+    </ul>
+  </div>
+  <div class="card card-purple">
+    <h3>Inside I2P: Garlic Routing &amp; Unidirectional Tunnels</h3>
+    <pre><code class="language-plaintext"> [Peer A] ──Outbound Tunnel──► [Relay] ──Inbound Tunnel──► [Peer B]
+          ◄──Inbound Tunnel─── [Relay] ◄──Outbound Tunnel──
+           (Multiple messages bundled into a "Garlic Bulb"!)</code></pre>
+    <ul>
+      <li><strong>Why I2P ≠ Tor:</strong> Tor is built to exit to the clearnet web (and hates BitTorrent traffic). <strong>I2P</strong> was engineered <em>specifically</em> for internal P2P overlays!</li>
+      <li><strong>Garlic Routing:</strong> Encrypts and bundles multiple independent messages ("cloves") + delivery instructions into a single "garlic bulb" across <strong>unidirectional tunnels</strong>.</li>
+      <li><strong>Built-in P2P Ecosystem:</strong> Ships with <strong>I2PSnark</strong> (anonymous BitTorrent) &amp; <strong>iMule</strong> (anonymous Kad/eMule) indexed via I2P's Kademlia <code>NetDB</code>!</li>
+    </ul>
+  </div>
+</div>
+
+Note:
+[30:45 - 31:45]
+Wait: even after BitTorrent and Kademlia defeated server shutdowns, there was still one massive vulnerability for end users: **your public IP address is visible to everyone in the swarm!**
+All an anti-piracy firm or government agency (like **HADOPI** in France) had to do was join the torrent swarm, run `GET_PEERS`, and write down every downloader's home IP!
+That gave birth to **Anonymous P2P** (like **Freenet**, **GNUnet**, and **Tribler**) and specifically **I2P (The Invisible Internet Project)** in 2003.
+People often confuse Tor and I2P, but their architectures are completely different:
+- Tor was built for low-latency web browsing out to the normal internet via Exit Nodes.
+- **I2P** was designed from day one for **Peer-to-Peer darknet services**! It uses **Unidirectional Tunnels** (separate inbound and outbound chains of peers so a relay never sees both request and response) and **Garlic Routing**—which wraps multiple encrypted messages ("cloves") into a single "garlic bulb" to defeat timing and traffic-analysis attacks. Right out of the box, I2P includes **I2PSnark** (an anonymous BitTorrent client) and **iMule** (an anonymous eMule client)!
+
+----
+
+## Friend-to-Friend (F2F) Darknets: WASTE & RetroShare
+
+<div class="grid-2">
+  <div class="card card-green">
+    <h3>2003: Justin Frankel Strikes Again (<code>WASTE</code>)</h3>
+    <ul>
+      <li>What if, instead of routing through random strangers on Tor/I2P, your P2P node <strong>only connects to people you trust in real life</strong>?</li>
+      <li><strong>May 2003:</strong> <strong>Justin Frankel</strong> (creator of Winamp &amp; Gnutella!) releases <strong>WASTE</strong> at Nullsoft — an RSA-encrypted <strong>Friend-to-Friend (F2F)</strong> mesh protocol for small trusted groups (10–50 peers) with chat and file-sharing.</li>
+      <li><strong>History Repeats Itself:</strong> For the <em>second</em> time, AOL panics and pulls Justin Frankel's code off Nullsoft's servers in <strong>under 24 hours</strong>!</li>
+    </ul>
+  </div>
+  <div class="card card-cyan">
+    <h3>Social Trust Graph Routing (<code>RetroShare</code> / <code>Turtle F2F</code>)</h3>
+    <pre><code class="language-plaintext">  [Alice] ◄══ PGP Mutual Auth ══► [Bob] ◄══ PGP Mutual Auth ══► [Charlie]
+     │                              │                               │
+     └──── Searches &amp; Downloads File From Charlie THROUGH Bob! ─────┘
+           (Alice &amp; Charlie NEVER see each other's IP address!)</code></pre>
+    <ul>
+      <li><strong>Zero Sybil or Poisoning Attacks:</strong> Anti-piracy bots cannot join your network unless one of your real-life friends physically exchanges PGP keys with them!</li>
+      <li><strong>Plausible Deniability &amp; Multi-Hop Privacy:</strong> You only ever open TCP/UDP sockets to your direct friends' IPs, while searches and file chunks hop anonymously across friends-of-friends (<code>RetroShare</code>, <code>OneSwarm</code>, <code>GNUnet F2F</code>).</li>
+    </ul>
+  </div>
+</div>
+
+Note:
+[31:45 - 32:45]
+And alongside anonymous mixnets like I2P, another fascinating architecture emerged: **Friend-to-Friend (F2F) Darknets**!
+First, an amazing anecdote: remember Justin Frankel, who released Gnutella in March 2000 and had it pulled by AOL in 24 hours?
+In **May 2003**, still working at Nullsoft, Frankel did it **again**! He released **WASTE**—an RSA-encrypted Friend-to-Friend mesh network for small trusted groups. And once again, AOL lawyers pulled it down within 24 hours!
+Later systems like **RetroShare**, **Turtle F2F**, and **OneSwarm** took Friend-to-Friend even further:
+Look at the diagram on the right: Alice is friends with Bob, and Bob is friends with Charlie, authenticated by PGP keys. Alice and Charlie don't know each other.
+In an F2F network, Alice **only ever connects to Bob's IP address**. Nobody on the internet can scan Alice's port or discover she's running P2P. Yet when Alice searches for a file, Bob forwards the query to Charlie, and the encrypted file chunks flow from Charlie through Bob to Alice—giving you a darknet built entirely on human trust!
 
 ---
 

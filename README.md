@@ -42,7 +42,7 @@ Then open **[http://localhost:8000](http://localhost:8000)** in your browser.
 
 ---
 
-## Talk Structure (45 Slides / 45 Minutes)
+## Talk Structure (49 Slides / 45 Minutes)
 
 - **Act 0: Cold Open — The 2003 Bedroom Experience (00:00 – 06:45)**
   - Title & eMule 99.9% status bar
@@ -57,15 +57,17 @@ Then open **[http://localhost:8000](http://localhost:8000)** in your browser.
   - Napster Hybrid P2P Architecture (`O(1)` central index + direct TCP transfer)
   - The University Campus Bandwidth Crisis (75% of T3 pipes)
   - Metallica's 13 boxes of paper & *A&M Records v. Napster* ("One throat to choke")
-- **Act II: Gen 2 — Cut Off One Head: Gnutella, Kazaa & eMule (12:45 – 22:30)**
+- **Act II: Gen 2 — Cut Off One Head: Gnutella, Kazaa, DC++ & eMule (12:45 – 24:15)**
   - Justin Frankel's 24-hour renegade release of Gnutella (March 2000)
   - Unstructured Query Flooding & the $O(b^{\text{TTL}})$ meltdown
   - FastTrack & Kazaa's self-organizing Supernode hierarchy (and how it became **Skype**)
+  - **Direct Connect (`DC++`, 1999–2000s)**: Community hubs, minimum share quotas (`100 GB+`), and TTH Tiger Tree Hashes on university LANs
   - eDonkey2000 & "Merkur" creating open-source **eMule** (`ed2k://` + 9.28 MB chunk hashing)
   - The trauma of **High ID vs. Low ID** (NAT port forwarding `4662` TCP / `4672` UDP)
   - The Dirty War: Overpeer/MediaDefender poisoning, RIAA lawsuits, Razorback 2.0 raid
   - How eMule fought back: AICH SHA-1 Merkle trees & 384-bit RSA credit signatures
-- **Act III: Gen 3 — BitTorrent, Kademlia & Mathematical Invincibility (22:30 – 31:30)**
+  - **The Kad Network (2004–2006)**: How eMule implemented the Kademlia DHT in production (`nodes.dat`, 128-bit XOR routing, UDP `4672` "Firewalled / Open") to survive server raids
+- **Act III: Gen 3 — BitTorrent, Kademlia, I2P & F2F Darknets (24:15 – 32:45)**
   - Why eMule struggled with Flash Crowds vs. Bram Cohen's **BitTorrent** (2001)
   - Piece Selection: *Random First*, *Rarest First*, and *Endgame Mode*
   - Game Theory in Code: *Tit-for-Tat* choking & *Optimistic Unchoking*
@@ -73,6 +75,8 @@ Then open **[http://localhost:8000](http://localhost:8000)** in your browser.
   - The Tracker Achilles' heel
   - **Kademlia DHT** (Maymounkov & Mazières, 2002) & the **XOR Metric** ($d(x,y) = x \oplus y$)
   - $O(\log N)$ routing across 10M+ nodes & trackerless **Magnet Links**
+  - **Anonymous P2P & I2P (Invisible Internet Project, 2003)**: Public swarm IP exposure (HADOPI), Unidirectional Tunnels, Garlic Routing, *I2PSnark* & *iMule*
+  - **Friend-to-Friend (F2F) Darknets**: Justin Frankel's **WASTE** (pulled by AOL in 24h!) & **RetroShare / Turtle F2F** PGP social trust graph routing
 - **Act IV: Plot Twist — P2P Under the Hood of Modern Infra (31:30 – 38:45)**
   - How µTorrent's creator (Ludvig Strigeus) built **Spotify's** desktop P2P streaming engine (88.4% bandwidth offloaded!)
   - Windows 10/11 Delivery Optimization, Blizzard's WoW Downloader & **Uber Kraken / CNCF Dragonfly**
