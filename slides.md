@@ -989,11 +989,152 @@ According to Spotify's own 2010 EuroSys academic paper, **over 88% of their tota
 </div>
 
 Note:
-[33:45 - 35:15]
+[33:45 - 34:45]
 Look around the rest of modern software:
 1. **Windows 10 and 11**: When Microsoft drops Patch Tuesday for 1.4 billion PCs, it uses **Delivery Optimization**—a built-in P2P swarming protocol that shares chunks across PCs on your office/home LAN and across regional peers.
 2. **Video Games**: Blizzard pioneered this in 2004—the *World of Warcraft* patcher was literally a custom BitTorrent client under the hood.
 3. **Cloud & Kubernetes**: Inside Uber, Alibaba, and ByteDance data centers, when you deploy a new microservice or AI container image to 20,000 servers at once, a traditional Docker registry collapses (the exact same client-server bottleneck from 1998!). So they built **Uber Kraken** and **CNCF Dragonfly**—peer-to-peer container distribution systems inside the data center!
+
+----
+
+## Git (Linus Torvalds, 2005): The P2P Merkle DAG You Use Every Day
+
+<div class="grid-60-40">
+  <div class="card card-green">
+    <h3>Every <code>git clone</code> Is a Full Peer</h3>
+    <ul>
+      <li><strong>Before 2005:</strong> CVS &amp; Subversion (SVN) were like HTTP/FTP — a single central server held the history. Server down? Nobody can commit or diff.</li>
+      <li><strong>April 2005:</strong> Inspired by BitKeeper and P2P content-addressing, <strong>Linus Torvalds</strong> builds <strong>Git</strong> in 10 days.</li>
+      <li>Every file (<code>blob</code>), folder (<code>tree</code>), and snapshot (<code>commit</code>) is addressed solely by its <strong>160-bit SHA-1 hash</strong> in a <strong>Merkle DAG</strong>.</li>
+      <li>Two laptops on a submarine with no internet can <code>git pull</code> and <code>git push</code> directly peer-to-peer over SSH and cryptographically verify 20 years of history from a single root commit hash!</li>
+    </ul>
+  </div>
+  <div class="card card-amber">
+    <h3>The Irony of GitHub</h3>
+    <pre><code class="language-plaintext">Commit e83c5163 (Root Hash)
+  └──► Tree 5b24a910
+        ├──► Blob 9f86d0 (README.md)
+        └──► Blob 4a1c02 (main.c)</code></pre>
+    <p>Git was architected as a <strong>100% serverless P2P system</strong>.</p>
+    <p class="text-amber">Then we all put <strong>GitHub</strong> in the middle as a central coordination server — accidentally recreating the <strong>Napster Hybrid P2P</strong> topology for source code!</p>
+  </div>
+</div>
+
+Note:
+[34:45 - 35:45]
+Think about the tool every single developer in this room uses 50 times a day: **Git**!
+Before 2005, version control was centralized (CVS, Subversion). When Linus Torvalds wrote Git in April 2005, he designed a pure **content-addressed P2P Merkle DAG**.
+Every file blob, directory tree, and commit is identified by a 160-bit SHA-1 hash—just like BitTorrent infohashes and eMule chunk trees! Every `git clone` is a full peer that can exchange objects directly with any other peer without a central server.
+And the funniest irony? We took a completely decentralized peer-to-peer protocol and voluntarily put GitHub right back in the center—recreating Napster's hybrid architecture so that when GitHub goes down, everyone stops working!
+
+----
+
+## Cassandra & DynamoDB: P2P DHTs Inside Your Database
+
+<div class="grid-2">
+  <div class="card card-cyan">
+    <h3>The 2007 Amazon Dynamo Paper</h3>
+    <p>When Amazon needed an "always-on" shopping cart database with <strong>zero master nodes</strong> and <strong>zero single points of failure</strong>, where did they look?</p>
+    <p>They directly adapted the 2001 P2P DHT papers (<strong>Chord &amp; Pastry</strong>) to create <strong>Dynamo</strong> — which gave birth to <strong>Apache Cassandra</strong>, <strong>ScyllaDB</strong>, and <strong>Riak</strong>:</p>
+    <ul>
+      <li><strong>128-bit Hash Ring:</strong> Both database nodes and row partition keys are hashed onto the exact same circular keyspace.</li>
+      <li><strong>Zero Master Nodes:</strong> Any peer can coordinate a read or write and route it to the responsible replica in $O(1)$ hops!</li>
+    </ul>
+  </div>
+  <div class="card card-purple">
+    <h3>P2P Gossip Protocols in Production</h3>
+    <pre><code class="language-plaintext">      [Node A: Token 0x00..]
+        /                \
+   Gossip (1s)        Gossip (1s)
+      /                    \
+ [Node D: 0xC0..] ◄═══► [Node B: 0x40..]
+      \                    /
+        \                /
+      [Node C: Token 0x80..]</code></pre>
+    <ul>
+      <li>How do 500 Cassandra nodes know which servers are alive or dead without a central ZooKeeper master?</li>
+      <li>Every <strong>1 second</strong>, each node runs an epidemic <strong>P2P Gossip round</strong> (<code>Scuttlebutt</code>) with 1–3 random peers — the direct descendant of Gnutella's overlay!</li>
+    </ul>
+  </div>
+</div>
+
+Note:
+[35:45 - 36:45]
+What about backend databases?
+In 2007, Amazon published the famous **Dynamo** paper, and Facebook open-sourced **Apache Cassandra** right after.
+If you read Section 4 of the Amazon Dynamo paper, what papers do they cite for their architecture? **Chord and Pastry—the 2001 Peer-to-Peer file-sharing DHT papers!**
+In Apache Cassandra and ScyllaDB:
+1. There is no master node. Every node is an equal peer on a **Consistent Hashing Ring**—just like Kademlia and Chord.
+2. And how do nodes discover topology changes and detect crashed servers? Every 1 second, they run a **P2P Gossip protocol** over TCP/UDP! Next time someone asks if P2P scales to enterprise workloads, remind them that Apple runs over 300,000 Apache Cassandra nodes using P2P DHT rings and gossip!
+
+----
+
+## Tailscale & WireGuard: eMule's "High ID" Grew Up
+
+<div class="grid-60-40">
+  <div class="card card-amber">
+    <h3>Why Legacy Corporate VPNs Sucked</h3>
+    <ul>
+      <li>Traditional VPNs (OpenVPN / IPsec concentrators) force every packet from your laptop to hairpin through a <strong>central VPN gateway</strong>.</li>
+      <li><strong>Tailscale, ZeroTier &amp; Nebula</strong> flipped VPNs to the <strong>Napster / Skype P2P model</strong>:
+        <ul>
+          <li><strong>Control Plane:</strong> Lightweight coordination server exchanges public keys (<code>WireGuard</code>).</li>
+          <li><strong>Data Plane:</strong> Direct, encrypted <strong>Peer-to-Peer UDP mesh</strong> between every device!</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="card card-green">
+    <h3>NAT Traversal Black Magic (UDP Hole Punching)</h3>
+    <pre><code class="language-plaintext">[Laptop Behind Hotel NAT]          [Home NAS Behind ISP Box]
+       │                                      │
+       └─── Simultaneous Outbound UDP ────────┘
+            Packets Punch State Table
+            Holes in BOTH Firewalls!</code></pre>
+    <ul>
+      <li>Uses <strong>STUN, ICE, UPnP/NAT-PMP</strong>, and even <strong>Birthday-Paradox port scanning</strong> to punch through strict carrier-grade NATs without touching <code>192.168.1.1</code>.</li>
+      <li>If all else fails, falls back to <code>DERP</code> relay servers — just like 2003 <strong>Skype Supernodes</strong>!</li>
+    </ul>
+  </div>
+</div>
+
+Note:
+[36:45 - 37:45]
+How many of you use **Tailscale**, **WireGuard**, or **ZeroTier** to connect to your home lab or company servers?
+Traditional corporate VPNs routed all your traffic through a central choke point. Tailscale asked: why not build a **peer-to-peer mesh VPN**?
+And how does Tailscale connect your laptop on coffee-shop Wi-Fi directly to your Raspberry Pi behind your home ISP router without you forwarding port `4662` like we did on eMule?
+It uses **UDP Hole Punching**! Both peers coordinate through the control plane and fire simultaneous outbound UDP packets at each other—tricking both stateful firewalls into thinking the incoming packet is a reply to an outbound request! And when faced with hard Symmetric NATs, Tailscale even uses the mathematical **Birthday Paradox** to try 256 random ports until two packets collide in mid-air and open a P2P tunnel!
+
+----
+
+## Apple's 1.5B-Device P2P Mesh & Steam LAN Transfers
+
+<div class="grid-3">
+  <div class="card card-cyan">
+    <h3>Apple AirDrop &amp; LocalSend</h3>
+    <p><span class="badge badge-cyan">ZERO INTERNET P2P</span></p>
+    <p>Uses Bluetooth Low Energy (BLE) to discover nearby peers, then spins up a direct peer-to-peer Wi-Fi radio link (<code>AWDL</code> / Wi-Fi Direct) to blast gigabytes between devices on an airplane with zero routers.</p>
+  </div>
+  <div class="card card-purple">
+    <h3>Apple "Find My" &amp; AirTags</h3>
+    <p><span class="badge badge-purple">1.5 BILLION NODES</span></p>
+    <p>How does an offline AirTag with no SIM card report its location from a forest?</p>
+    <p>It broadcasts a rotating public key via Bluetooth. Any stranger's iPhone walking by encrypts its own GPS location for that key and acts as a <strong>P2P store-and-forward mule</strong>!</p>
+  </div>
+  <div class="card card-green">
+    <h3>Steam Local Network Transfers</h3>
+    <p><span class="badge badge-green">150 GB GAMES</span></p>
+    <p>Installing <em>Baldur's Gate 3</em> on your Steam Deck while it's already installed on your gaming PC?</p>
+    <p>Steam automatically discovers peers on your home LAN and streams verified game chunks <strong>Peer-to-Peer at 1 Gbps</strong> instead of re-downloading from Valve!</p>
+  </div>
+</div>
+
+Note:
+[37:45 - 38:45]
+And even consumer hardware runs on P2P today:
+1. **AirDrop and LocalSend**: Bluetooth Low Energy discovery combined with an ad-hoc Peer-to-Peer Wi-Fi Direct link—no router or internet needed.
+2. **Apple's "Find My" Network**: Think about how crazy this is—Apple quietly turned 1.5 billion iPhones, iPads, and Macs into the largest crowd-sourced P2P mesh network on Earth. An AirTag has no GPS and no cellular chip; it just whispers a cryptographic public key over Bluetooth, and any passerby's iPhone becomes an anonymous P2P relay node!
+3. **Steam Local Network Game Transfers**: Valve built LAN P2P swarming directly into Steam so your Steam Deck pulls 150 GB game chunks directly from your desktop PC over local Wi-Fi.
 
 ----
 

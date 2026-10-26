@@ -42,7 +42,7 @@ Then open **[http://localhost:8000](http://localhost:8000)** in your browser.
 
 ---
 
-## Talk Structure (39 Slides / 45 Minutes)
+## Talk Structure (45 Slides / 45 Minutes)
 
 - **Act 0: Cold Open — The 2003 Bedroom Experience (00:00 – 06:45)**
   - Title & eMule 99.9% status bar
@@ -73,9 +73,13 @@ Then open **[http://localhost:8000](http://localhost:8000)** in your browser.
   - The Tracker Achilles' heel
   - **Kademlia DHT** (Maymounkov & Mazières, 2002) & the **XOR Metric** ($d(x,y) = x \oplus y$)
   - $O(\log N)$ routing across 10M+ nodes & trackerless **Magnet Links**
-- **Act IV: Plot Twist — P2P Under the Hood of Modern Infra (31:30 – 37:15)**
+- **Act IV: Plot Twist — P2P Under the Hood of Modern Infra (31:30 – 38:45)**
   - How µTorrent's creator (Ludvig Strigeus) built **Spotify's** desktop P2P streaming engine (88.4% bandwidth offloaded!)
   - Windows 10/11 Delivery Optimization, Blizzard's WoW Downloader & **Uber Kraken / CNCF Dragonfly**
+  - **Git** (Linus Torvalds, 2005): A content-addressed P2P Merkle DAG that GitHub re-centralized
+  - **Apache Cassandra & Amazon DynamoDB**: How 2001 P2P DHT papers (*Chord* & *Pastry*) gave birth to NoSQL consistent hashing rings & gossip protocols
+  - **Tailscale, WireGuard & ZeroTier**: How eMule's High ID evolved into modern UDP hole-punching mesh VPNs
+  - **Apple AirDrop, "Find My" / AirTags (1.5B-device P2P mesh) & Steam Local Network Game Transfers**
   - WebRTC (`STUN`/`TURN`/`ICE`) & **PeerTube** browser-to-browser video swarming
   - Bitcoin's P2P gossip + Sybil resistance & **Mistral AI** dropping 87 GB LLMs via Magnet links
 - **Act V: The Web of Tomorrow — IPFS, libp2p & Local-First (37:15 – 43:45)**
