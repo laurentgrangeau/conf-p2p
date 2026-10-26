@@ -4,7 +4,15 @@ A 45-minute conference talk deck built with **[Reveal.js](https://github.com/hak
 
 ---
 
-## Quick Start
+## Live Presentation (GitHub Pages)
+
+The deck is automatically deployed to GitHub Pages on every push to `main` via [`.github/workflows/deploy-pages.yml`](./.github/workflows/deploy-pages.yml):
+
+👉 **[https://laurentgrangeau.github.io/conf-p2p/](https://laurentgrangeau.github.io/conf-p2p/)**
+
+---
+
+## Quick Start (Local)
 
 Because Reveal.js fetches [`slides.md`](./slides.md) dynamically via `fetch()`, serve the directory over a local HTTP server:
 
